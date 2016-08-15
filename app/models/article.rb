@@ -8,6 +8,8 @@ class Article < ActiveRecord::Base
   validate :valid_formality_range
 
   belongs_to :user
+  has_many :compositions
+  has_many :outfits, through: :compositions
 
   def valid_temp_range
     unless temp_min.between?(1,5)
