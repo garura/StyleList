@@ -7,6 +7,7 @@ class Api::UsersController < ApplicationController
       render json: @user.errors.full_messages, status: 422
   end
 
+  # check consistency with server errors response
   def update
     user = current_user
     if user.update!(user_params)

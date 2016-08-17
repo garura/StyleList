@@ -9,17 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MeredithAnya/StyleList.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MeredithAnya/StyleList/issues"
-  },
-  "homepage": "https://github.com/MeredithAnya/StyleList#readme",
   "dependencies": {
     "babel-core": "^6.13.2",
     "babel-loader": "^6.2.5",
