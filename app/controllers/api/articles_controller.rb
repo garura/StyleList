@@ -11,7 +11,7 @@ class Api::ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = Article.find_by_id(params[:id])
     # @article.user_id == current_user.id ?
     if @article
       render :show
@@ -31,10 +31,11 @@ class Api::ArticlesController < ApplicationController
 
   def update
     # grab id from params? will depend on route
-    @article = Article.find(params[:article][:id]) # ??
+    @article = Article.find_by_id(params[:id]) # ??
     # @article.user_id == current_user.id?
-    render json: { errors: "Article not found" }, status: 404 unless @article # is this the correct way to write this?
-    if @article.update(article_params)
+    if @article.nil?
+      render json: { errors: "Article not found" }, status: 404
+    elsif @article.update(article_params)
       render :show
     else
       render json: { errors: "Invalid article attributes" }, status: 422
@@ -42,8 +43,9 @@ class Api::ArticlesController < ApplicationController
   end
 
   def destroy
-    article = Article.find(params[:article][:id])
-    if article && article.delete
+    article = Article.find_by_id(params[:id])
+    if article
+      article.delete
       render json: { destroyed: true } # redundant?
     else
       render json: { errors: "Article not found" }, status: 404

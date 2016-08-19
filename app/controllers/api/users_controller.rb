@@ -3,15 +3,16 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in!(@user)
+      render :show
     else
       render json: @user.errors.full_messages, status: 422
   end
 
   # check consistency with server errors response
   def update
-    user = current_user
-    if user.update!(user_params)
-      render json: "to be filled in"
+    @user = current_user
+    if @user.update!(user_params)
+      render :show
     else
       render json: @user.errors.full_messages, status: 422
     end
