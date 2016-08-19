@@ -1,16 +1,18 @@
 class Api::ArticlesController < ApplicationController
 
   def index
-    if current_user
-      @articles = current_user.articles
+    # if current_user
+      @articles = User.first.articles_by_type
+      # @articles = current_user.articles_by_type
       render :index
-    else
-      render json: { errors: "not logged in" }
-    end
+    # else
+    #   render json: { errors: "not logged in" }
+    # end
   end
 
   def show
-    @article = Article.find(params[:article][:id])
+    @article = Article.find(params[:id])
+    # @article.user_id == current_user.id ?
     if @article
       render :show
     else
@@ -30,6 +32,7 @@ class Api::ArticlesController < ApplicationController
   def update
     # grab id from params? will depend on route
     @article = Article.find(params[:article][:id]) # ??
+    # @article.user_id == current_user.id?
     render json: { errors: "Article not found" }, status: 404 unless @article # is this the correct way to write this?
     if @article.update(article_params)
       render :show

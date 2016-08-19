@@ -14,10 +14,22 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  ARTICLE_TYPES = {
+    "top" => :tops,
+    "bottom" => :bottoms,
+    "outerwear" => :outerwear,
+    "dress" => :dresses,
+    "shoes" => :shoes,
+    "misc" => :misc
+  }
+
   def articles_by_type
-    group = Hash.new { [] }
+    group = Hash.new
+    ARTICLE_TYPES.each do |_, type|
+      group[type] = []
+    end
     self.articles.each do |article|
-      group[article.article_type] << article
+      group[ARTICLE_TYPES[article.article_type]] << article
     end
 
     group
