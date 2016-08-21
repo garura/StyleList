@@ -1,5 +1,5 @@
 json.array! @outfits do |outfit|
-  json.extract! outfit, :id, :temp_min, :temp_min, :rain, :clouds,
+  json.extract! outfit, :id, :temp_min, :temp_max, :rain, :clouds,
     :snow, :wind, :formality, :last_worn
   json.articles do
     json.array! outfit.articles do |article|
