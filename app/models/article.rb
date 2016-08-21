@@ -2,7 +2,7 @@ class Article < ActiveRecord::Base
 
   BOOLEAN_VALUES = [true, false]
   ARTICLE_TYPES = ["top", "bottom", "outerwear", "shoes", "dress", "misc"]
-  
+
   validates :user_id, :article_type, :title, :temp_min, :temp_max, :formality, presence: true
   validates :rain, :clouds, :snow, :wind, inclusion: BOOLEAN_VALUES
   validates :article_type, inclusion: ARTICLE_TYPES
