@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819212527) do
+ActiveRecord::Schema.define(version: 20160821001528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,17 +46,19 @@ ActiveRecord::Schema.define(version: 20160819212527) do
   end
 
   create_table "outfits", force: :cascade do |t|
-    t.integer  "user_id",                null: false
-    t.integer  "temp_min",   default: 1, null: false
-    t.integer  "temp_max",   default: 5, null: false
-    t.boolean  "rain",                   null: false
-    t.boolean  "clouds",                 null: false
-    t.boolean  "snow",                   null: false
-    t.boolean  "wind",                   null: false
-    t.integer  "formality",              null: false
+    t.integer  "user_id",                      null: false
+    t.integer  "temp_min",   default: 1,       null: false
+    t.integer  "temp_max",   default: 5,       null: false
+    t.boolean  "rain",                         null: false
+    t.boolean  "clouds",                       null: false
+    t.boolean  "snow",                         null: false
+    t.boolean  "wind",                         null: false
+    t.integer  "formality",                    null: false
     t.date     "last_worn"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "title",      default: "#OOTD", null: false
+    t.text     "notes"
   end
 
   add_index "outfits", ["user_id"], name: "index_outfits_on_user_id", using: :btree
