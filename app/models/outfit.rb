@@ -34,7 +34,7 @@ class Outfit < ActiveRecord::Base
 
   def save_compositions(article_ids)
     if article_ids
-      compositions = article_ids.map do |article_id|
+      compositions = article_ids.uniq.map do |article_id|
         Composition.new(outfit_id: self.id, article_id: article_id.to_i)
       end
 
