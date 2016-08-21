@@ -1,7 +1,7 @@
 class Outfit < ActiveRecord::Base
-  #add validations
+
   BOOLEAN_VALUES = [true, false]
-  validates :user_id, :temp_min, :temp_max, :rain, :title, presence: true
+  validates :user_id, :temp_min, :temp_max, :title, :formality, presence: true
   validates :rain, :clouds, :snow, :wind, inclusion: BOOLEAN_VALUES
   validate :valid_temp_range
   validate :valid_formality_range
