@@ -17,11 +17,10 @@ class Api::OutfitsController < ApplicationController
 
     render :show
   end
+  private
 
-
-
-
-
-
+  def outfit_params
+    params.require(:outfit).permit(:temp_min,:temp_max,:rain,:clouds,:snow,:wind,:formality,:last_worn,:title,:notes,:articles)
+  end
 
 end
