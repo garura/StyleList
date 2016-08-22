@@ -1,19 +1,16 @@
 class Api::ArticlesController < ApplicationController
 
+  before_action :require_logged_in
+
   def index
-    # if current_user
-      @articles = User.first.articles_by_type
-      # @articles = current_user.articles_by_type
-      render :index
-    # else
-    #   render json: { errors: "not logged in" }
-    # end
+    user = current_user
+    @articles = user.articles_by_type
+    render :index
   end
 
   def show
     @article = Article.find_by_id(params[:id])
-    # @article.user_id == current_user.id ?
-    if @article
+    if @article && @article.user_id == current_user.id
       render :show
     else
       render json: { errors: "Article not found" }, status: 404
@@ -22,6 +19,7 @@ class Api::ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user_id = current_user.id
     if @article.save
       render :show
     else
@@ -30,10 +28,8 @@ class Api::ArticlesController < ApplicationController
   end
 
   def update
-    # grab id from params? will depend on route
-    @article = Article.find_by_id(params[:id]) # ??
-    # @article.user_id == current_user.id?
-    if @article.nil?
+    @article = Article.find_by_id(params[:id])
+    if @article.nil? || @article.user_id != current_user.id
       render json: { errors: "Article not found" }, status: 404
     elsif @article.update(article_params)
       render :show
@@ -44,7 +40,7 @@ class Api::ArticlesController < ApplicationController
 
   def destroy
     article = Article.find_by_id(params[:id])
-    if article
+    if article && article.user_id == current_user.id
       article.delete
       render json: { destroyed: true } # redundant?
     else
@@ -57,7 +53,7 @@ class Api::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:user_id, :article_type, :title,
+    params.require(:article).permit(:article_type, :title,
       :description, :pic_url, :color, :temp_min, :temp_max, :formality,
       :last_worn, :brand, :rain, :clouds, :snow, :wind)
   end

@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_logged_in
+    unless current_user
+      # redirect to the sign_in/sign_up page?
+    end
+  end
+
   def log_in!(user)
     user.reset_session_token!
     session[:session_token] = user.session_token

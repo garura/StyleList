@@ -11,6 +11,22 @@ class Outfit < ActiveRecord::Base
   has_many :compositions
   has_many :articles, through: :compositions
 
+  def save_compositions(article_ids)
+    if article_ids
+      compositions = article_ids.uniq.map do |article_id|
+        Composition.new(outfit_id: self.id, article_id: article_id.to_i)
+      end
+
+      Composition.transaction do
+        compositions.each do |comp|
+          comp.save
+        end
+      end
+    end
+  end
+
+  private
+
   def valid_temp_range
     unless temp_min.between?(1,5)
       errors[:temp_min] << "Invalid minimum temperature"
@@ -28,21 +44,10 @@ class Outfit < ActiveRecord::Base
       errors[:formality] << "Invalid formality input"
     end
   end
+
   def set_title
-    self.title = "#OOTD #{Date.today.to_formatted_s(:long)}"
-  end
-
-  def save_compositions(article_ids)
-    if article_ids
-      compositions = article_ids.uniq.map do |article_id|
-        Composition.new(outfit_id: self.id, article_id: article_id.to_i)
-      end
-
-      Composition.transaction do
-        compositions.each do |comp|
-          comp.save
-        end
-      end
+    if self.title == "#OOTD"
+      self.title = "#OOTD #{Date.today.to_formatted_s(:long)}"
     end
   end
 
