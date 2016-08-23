@@ -31,7 +31,9 @@ class User < ActiveRecord::Base
     self.articles.each do |article|
       group[ARTICLE_TYPES[article.article_type]][article.id] = article
     end
-
+    group.each do |type, clothes|
+      group[type][:count] = clothes.keys.count
+    end
     group
   end
 
