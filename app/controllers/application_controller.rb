@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def require_logged_in
     unless current_user
-      # redirect to the sign_in/sign_up page?
+      redirect_to new_session_url
     end
   end
 

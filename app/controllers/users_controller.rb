@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.temp_offset = @user.temp_offset.to_i
     if @user.save
       log_in!(@user)
       redirect_to root_url

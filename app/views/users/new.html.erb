@@ -1,4 +1,37 @@
 <div class="sign-up">
   <h1>StyleList</h1>
-  <p>form stuff</p>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+  <% end %>
+  <form class="signup-form" action="<%= users_url %>" method="post">
+    <%= auth_token_input %>
+
+    <label class="signin-label">
+      Name
+      <input class="signin-input" type="text" name="user[name]" value="<%= @user.name %>">
+    </label>
+
+    <label class="signin-label">
+      Email
+      <input class="signin-input" type="text" name="user[email]" value="<%= @user.email %>">
+    </label>
+
+    <label class="signin-label">
+      Password
+      <input class="signin-input" type="password" name="user[password]" value="">
+    </label>
+
+    <label class="signin-label">
+      Zipcode
+      <input class="signin-input" type="text" name="user[zipcode]" value="<%= @user.zipcode %>">
+    </label>
+
+    <%= radio_button("user", "temp_offset", -5) %>
+    <%= radio_button("user", "temp_offset", 0) %>
+    <%= radio_button("user", "temp_offset", 5) %>
+
+    <input class="signin-submit" type="submit" value="Sign Up">
+  </form>
 </div>
