@@ -31,6 +31,9 @@ span, article, footer, time, small {
   background: transparent;
   /*font-family: 'Roboto Condensed', sans-serif;*/
 }
+button:hover {
+  cursor: pointer;
+}
 body {
   background-color: #93E1D8;
 }
