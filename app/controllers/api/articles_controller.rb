@@ -4,7 +4,8 @@ class Api::ArticlesController < ApplicationController
 
   def index
     user = current_user
-    @articles = user.articles_by_type
+    # @articles = user.articles_by_type
+    @articles = user.articles
     render :index
   end
 

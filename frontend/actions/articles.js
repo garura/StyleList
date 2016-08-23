@@ -29,17 +29,16 @@ export const requestArticles = () => {
   }
 }
 
-export const receiveArticles = (articles) => {
+export const receiveArticles = (data) => {
   return {
     type: "RECEIVE_ARTICLES",
-    articles
+    data
   }
 }
 
 export function fetchArticles() {
   return function (dispatch) {
     dispatch(requestArticles)
-    return fetch('http://localhost:3000/api/articles')
-      .then(articles => dispatch(receiveArticles(articles)))
+    return fetch('http://localhost:3000/api/articles').then(articles => dispatch(receiveArticles(articles)))
   }
 }

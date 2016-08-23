@@ -1,6 +1,6 @@
 const initialState = {
   isFetching: false,
-  tops: {"hi": 2},
+  tops: {},
   bottoms: {},
   outerwear: {},
   dresses: {},
@@ -8,7 +8,7 @@ const initialState = {
   misc: {}
 }
 
-const articlesReducer = (state = initialState, action) => {
+const articles = (state = initialState, action) => {
   switch (action.type) {
     case 'REQUEST_ARTICLES':
       return Object.assign({}, state, {
@@ -17,12 +17,12 @@ const articlesReducer = (state = initialState, action) => {
     case 'RECEIVE_ARTICLES':
       return Object.assign({}, state, {
         isFetching: false,
-        tops: action.tops,
-        bottoms: action.bottoms,
-        outerwear: action.outerwear,
-        dresses: action.dresses,
-        shoes: action.shoes,
-        misc: action.misc
+        tops: action.data.articles.tops,
+        bottoms: action.data.articles.bottoms,
+        outerwear: action.data.articles.outerwear,
+        dresses: action.data.articles.dresses,
+        shoes: action.data.articles.shoes,
+        misc: action.data.articles.misc
       })
     default:
       return state
@@ -31,4 +31,4 @@ const articlesReducer = (state = initialState, action) => {
 
 
 
-export default articlesReducer
+export default articles

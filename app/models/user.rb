@@ -26,10 +26,10 @@ class User < ActiveRecord::Base
   def articles_by_type
     group = Hash.new
     ARTICLE_TYPES.each do |_, type|
-      group[type] = []
+      group[type] = {}
     end
     self.articles.each do |article|
-      group[ARTICLE_TYPES[article.article_type]] << article
+      group[ARTICLE_TYPES[article.article_type]][article.id] = article
     end
 
     group
