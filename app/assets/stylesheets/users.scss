@@ -2,18 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .logo {
-  font-size: 50px;
+  display: block;
+  font-size: 70px;
   text-align: center;
   color: white;
-  margin: 20px;
+  // padding: 10px;
+  margin: 40px auto;
   // color: #5603AD;
   // text-shadow: 2px 1px 1px white;
 }
 .signup {
-  border: 1px solid #48ACF0;
+  border: 3px solid #93A3BC;
+  border-radius: 5px;
   background-color: rgba(255, 255, 255, .8);
   color: #011936;
-  width: 80%;
+  width: 400px;
   height: 400px;
   margin: 0 auto;
   font-size: 22px;
@@ -22,25 +25,29 @@
   justify-content: space-around;
   align-items: center;
   .signup-form {
-    // width: 80%;
     display: flex;
     flex-direction: column;
-
+    .signup-labels {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+    }
   }
   .signup-submit {
-    color: #011936;
     padding: 10px;
   }
+  .signup-submit:hover {
+    cursor: pointer;
+  }
   .signup-input {
-    padding: 5px;
-    color: #011936;
+    border: 1px solid darkgrey;
+    margin-left: 10px;
+    padding: 5px 20px;
+    text-align: center;
     background-color: rgba(255, 255, 255, .8);
   }
-}
-
-
-
-.signup-label {
-  color: #011936;
-  padding: 10px;
+  .signup-label {
+    padding: 10px
+  }
 }
