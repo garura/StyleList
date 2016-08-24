@@ -8,22 +8,10 @@
   <form class="signup-form" action="<%= users_url %>" method="post">
     <%= auth_token_input %>
     <div class="signup-labels">
-      <label class="signup-label">
-        <!-- Name -->
-      </label>
+      <p class="signup-title">Create Account</p>
       <input class="signup-input" type="text" name="user[name]" placeholder="Name" value="<%= @user.name %>">
-
-      <label class="signup-label">
-        <!-- Email -->
-      </label>
       <input class="signup-input" type="text" name="user[email]" placeholder="Email"value="<%= @user.email %>">
-
-      <label class="signup-label">
-        <!-- Password -->
-      </label>
       <input class="signup-input" type="password" placeholder="Password" name="user[password]" value="">
-
-      <label class="signup-label"></label>
       <input class="signup-input" type="text" name="user[zipcode]" placeholder="Zipcode" value="<%= @user.zipcode %>">
       <label class="signup-label">
         <%= radio_button("user", "temp_offset", -5) %>
@@ -33,10 +21,12 @@
         Usually happy as a clam...
         <br>
         <%= radio_button("user", "temp_offset", 5) %>
-        Or warm too easily?
+        Or find yourself too warm?
       </label>
       <input class="signup-submit" type="submit" value="Sign Up">
     </div>
+
+    <%= link_to "I already have an account", new_session_url, class: "signin-link" %>
 
   </form>
 </div>

@@ -3,23 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .logo {
   display: block;
-  font-size: 70px;
+  font-size: 90px;
   text-align: center;
   color: white;
-  // padding: 10px;
   margin: 40px auto;
-  // color: #5603AD;
-  // text-shadow: 2px 1px 1px white;
+  font-family: 'Fredericka the Great';
 }
 .signup {
   border: 3px solid #93A3BC;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, .8);
   color: #011936;
-  width: 400px;
-  height: 400px;
+  width: 450px;
   margin: 0 auto;
+  padding: 10px 0px;
   font-size: 22px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -27,6 +26,9 @@
   .signup-form {
     display: flex;
     flex-direction: column;
+    .signup-title {
+      font-size: 28px;
+    }
     .signup-labels {
       display: flex;
       flex-direction: column;
@@ -35,19 +37,32 @@
     }
   }
   .signup-submit {
-    padding: 10px;
+    padding: 8px 20px;
+    margin: 10px 0px;
+    background-color: lightblue;
+    border: 1px solid grey;
+    border-radius: 3px;
   }
   .signup-submit:hover {
     cursor: pointer;
+    color: white;
   }
   .signup-input {
     border: 1px solid darkgrey;
-    margin-left: 10px;
-    padding: 5px 20px;
+    margin: 11px 0px;
+    padding: 7px 20px 5px 20px;
     text-align: center;
     background-color: rgba(255, 255, 255, .8);
   }
-  .signup-label {
-    padding: 10px
+  .signin-link {
+    background-color: lightblue;
+    text-align: center;
+    padding: 2px 2px;
+    border: 1px solid darkgrey;
+    border-radius: 3px;
+  }
+  .signin-link:hover {
+    cursor:pointer;
+    color: white;
   }
 }

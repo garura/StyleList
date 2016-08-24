@@ -5,43 +5,69 @@
 body {
   background-color: #F45866;
 }
-.logo {
-  font-size: 50px;
+.logo-signin {
+  display: block;
+  font-size: 90px;
   text-align: center;
   color: white;
-  margin: 20px;
-  // color: #5603AD;
-  // text-shadow: 2px 1px 1px white;
+  margin: 40px;
+  font-family: 'Fredericka the Great';
 }
 .signin {
-  border: 1px solid #48ACF0;
-  color: #011936;
+  border: 3px solid #93A3BC;
+  border-radius: 5px;
   background-color: rgba(255, 255, 255, .8);
-  width: 80%;
-  height: 400px;
+  color: #011936;
+  width: 450px;
   margin: 0 auto;
+  padding: 10px 0px;
   font-size: 22px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   .signin-form {
-
+    display: flex;
+    flex-direction: column;
+    .signin-title {
+      font-size: 28px;
+    }
+    .signin-labels {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+    }
   }
   .signin-submit {
-    color: #011936;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, .8);
+    padding: 8px 20px;
+    margin: 5px 0px;
+    background-color: lightblue;
+    border: 1px solid grey;
+    border-radius: 3px;
   }
   .signin-submit:hover {
     cursor: pointer;
-  }
-  button {
     color: white;
   }
-}
-
-.signin-label {
-  color: #011936;
-  padding: 10px;
+  .signin-input {
+    border: 1px solid darkgrey;
+    margin: 11px 0px;
+    padding: 7px 20px 5px 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, .8);
+  }
+  .signin-link {
+    margin: 2px 0px;
+    padding: 2px 2px;
+    background-color: lightblue;
+    text-align: center;
+    border: 1px solid darkgrey;
+    border-radius: 3px;
+  }
+  .signin-link:hover {
+    cursor: pointer;
+    color: white;
+  }
 }
