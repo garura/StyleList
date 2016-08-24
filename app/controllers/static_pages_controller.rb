@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def root
-    if current_user
+    if true
       render :root
     else
       redirect_to new_session_url
