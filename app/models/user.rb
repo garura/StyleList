@@ -26,13 +26,11 @@ class User < ActiveRecord::Base
   def articles_by_type
     group = Hash.new
     ARTICLE_TYPES.each do |_, type|
-      group[type] = {}
+      group[type] = {count: 0}
     end
     self.articles.each do |article|
       group[ARTICLE_TYPES[article.article_type]][article.id] = article
-    end
-    group.each do |type, clothes|
-      group[type][:count] = clothes.keys.count
+      group[ARTICLE_TYPES[article.article_type]][:count] += 1
     end
     group
   end

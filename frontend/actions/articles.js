@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch'
+// import fetch from 'isomorphic-fetch'
 
 export const addArticles = (articles) => {
   return {
@@ -39,6 +39,7 @@ export const receiveArticles = (data) => {
 export function fetchArticles() {
   return function (dispatch) {
     dispatch(requestArticles)
-    return fetch('http://localhost:3000/api/articles').then(articles => dispatch(receiveArticles(articles)))
+    return fetch('api/articles')
+    // .then(articles => dispatch(receiveArticles(articles)))
   }
 }

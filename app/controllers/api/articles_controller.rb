@@ -3,8 +3,8 @@ class Api::ArticlesController < ApplicationController
   before_action :require_logged_in
 
   def index
-    user = current_user
-    @articles = user.articles_by_type
+    @user = current_user
+    @articles = @user.articles_by_type
     # @articles = user.articles
     render :index
   end
