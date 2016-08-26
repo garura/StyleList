@@ -36,16 +36,11 @@ export const receiveArticles = (data) => {
   }
 }
 
-// const headers = new Headers ({
-//   "X-Custom-Header": "session-cookie"
-// })
-// const init = {
-//   headers: headers
-// }
-export function fetchArticles(headers) {
+
+export function fetchArticles() {
   return function (dispatch) {
     dispatch(requestArticles)
-    return fetch('api/articles', headers)
+    return fetch('api/articles')
     // .then(articles => dispatch(receiveArticles(articles)))
   }
 }
