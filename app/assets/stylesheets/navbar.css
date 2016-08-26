@@ -1,0 +1,42 @@
+.navbar {
+  display: inline-block;
+  height: 100vh;
+  margin-right: 10px;
+  /*border-right: 1px solid white;*/
+  background-color: #011936;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.navbar-logo {
+  color: white;
+  background-color: #7796CB;
+  /*background-color: #93E1D8;*/
+  padding: 10px;
+  font-size: 50px;
+  font-family: 'Fredericka the Great';
+}
+
+.navbar-options {
+  color: white;
+  height: 70%;
+  background-color: #134074;
+  /*background-color: #EFE9E7;*/
+  /*background-color: #CAE5FF;*/
+  /*background-color: #011936;*/
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  list-style: none;
+  font-size: 20px;
+  /*align-items: center;
+  /*margin: 20px 15px;
+  padding: 20px 0px;*/
+}
+
+.test {
+  background-color: white;
+  height: 600px;
+  width: 600px;
+  display: inline-block;
+}
