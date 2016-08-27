@@ -1,5 +1,6 @@
 import React from 'react'
 import ArticleStore from '../stores/articleStore'
+import FilteredType from './filteredType'
 
 export default class TypeFilter extends React.Component {
 
@@ -92,14 +93,20 @@ export default class TypeFilter extends React.Component {
 
     return (
       <div className='type-filter'>
-        <p>{this.state.type} ({this.state.displayed.length})</p>
-        {this.weatherElements()}
-        <div className='filter-formality'>
-          <p onClick={this._applyFilter}>Formality</p>
+        <div className="filter-header">
+          <p>{this.state.type} ({this.state.displayed.length})</p>
+          <button>Show All</button>
         </div>
-        <div className='filter-colors'>
-          <p onClick={this._applyFilter}>Colors</p>
+        <div className="filter-options">
+          {this.weatherElements()}
+          <div className='filter-formality'>
+            <p onClick={this._applyFilter}>Formality</p>
+          </div>
+          <div className='filter-colors'>
+            <p onClick={this._applyFilter}>Colors</p>
+          </div>
         </div>
+        <FilteredType/>
 
       </div>
     )

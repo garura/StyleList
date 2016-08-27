@@ -11,6 +11,18 @@ export default class ArticlesIndex extends React.Component {
       articles: {
         tops: {
           ids: []
+        },
+        bottoms: {
+          ids: []
+        },
+        outerwear: {
+          ids: []
+        },
+        dresses: {
+          ids: []
+        },
+        shoes: {
+          ids: []
         }
       }
     };
@@ -44,6 +56,10 @@ export default class ArticlesIndex extends React.Component {
     return (
       <div className="articles-index">
         <TypeFilter type="Tops" displayed={this.state.articles.tops.ids}/>
+        <TypeFilter type="Bottoms" displayed={this.state.articles.bottoms.ids}/>
+        <TypeFilter type="Outerwear" displayed={this.state.articles.outerwear.ids}/>
+        <TypeFilter type="Dresses" displayed={this.state.articles.dresses.ids}/>
+        <TypeFilter type="Shoes" displayed={this.state.articles.shoes.ids}/>
       </div>
     )
   }

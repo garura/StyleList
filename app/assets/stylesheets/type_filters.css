@@ -1,6 +1,15 @@
 .type-filter {
   background-color: white;
 }
+.filter-header {
+  display: inline-block;
+  border: 1px solid lightgreen;
+}
+.filter-options {
+  display: inline-block;
+  border: 1px solid red;
+}
+
 
 #rain {
 }
