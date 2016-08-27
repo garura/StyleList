@@ -11,14 +11,14 @@ export default class TypeFilter extends React.Component {
       displayed: props.displayed,
       applied: {
         weather: false,
-        color: false,
+        colors: false,
         formality: false
       },
       weather: {
         rain: false,
         snow: false,
         wind: false,
-        clouds: true,
+        clouds: false,
         temp: 3
       },
       color: {
@@ -95,7 +95,7 @@ export default class TypeFilter extends React.Component {
   }
   _updateFilter(event) {
     event.preventDefault();
-    let filtertype = this.state.type;
+    let filtertype = this.state.type.toLowerCase();
     let applied = this.state.applied;
     let weather = this.state.weather;
     let color = this.state.color;
