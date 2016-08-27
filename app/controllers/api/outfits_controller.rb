@@ -5,6 +5,7 @@ class Api::OutfitsController < ApplicationController
   def index
     user = current_user
     @outfits = user.outfits.includes(:articles)
+    @ids = @outfits.map { |outfit| outfit.id }
     render :index
   end
 
