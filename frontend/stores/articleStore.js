@@ -16,6 +16,10 @@ articleStore.getArticles = () => {
   return _articles;
 }
 
+articleStore.filterArticles = (filtertype, applied) => {
+  return [1,4,8];
+}
+
 let resetArticles = (articles) => {
   _articles = articles.articles
 }

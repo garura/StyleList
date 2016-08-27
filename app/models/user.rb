@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
     end
     self.articles.each do |article|
       group[ARTICLE_TYPES[article.article_type]][article.id] = article
-      group[ARTICLE_TYPES[article.article_type]][:ids] << article
+      group[ARTICLE_TYPES[article.article_type]][:ids] << article.id
     end
     group
   end

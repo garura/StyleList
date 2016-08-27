@@ -1,4 +1,5 @@
 .viewable-articles {
   border: 1px solid pink;
   display: block;
+  clear: right;
 }

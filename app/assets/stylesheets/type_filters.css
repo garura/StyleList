@@ -8,6 +8,11 @@
 .filter-options {
   display: inline-block;
   border: 1px solid red;
+  float: right;
+}
+
+.isHidden {
+  display: none;
 }
 
 
