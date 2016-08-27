@@ -23,19 +23,19 @@
   /*background-color: #EFE9E7;*/
   /*background-color: #CAE5FF;*/
   /*background-color: #011936;*/
-  /*justify-content: space-around;*/
-  /*display: flex;*/
-  /*flex-direction: column;*/
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
   padding-left: 20px;
   list-style: none;
   font-size: 20px;
-  /*align-items: center;
-  /*margin: 20px 15px;
-  padding: 20px 0px;*/
+  margin: 20px 15px;
+  padding: 20px 0px;
 }
 
 .articles-index {
   background-color: grey;
+  vertical-align: top;
   display: inline-block;
   height: 40px;
 }

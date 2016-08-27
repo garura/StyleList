@@ -32,7 +32,7 @@ class Article < ActiveRecord::Base
   end
 
   def valid_formality_range
-    unless formality.between?(1,10)
+    unless formality.between?(1,5)
       errors[:formality] << "Invalid formality input"
     end
   end
