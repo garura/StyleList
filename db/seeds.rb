@@ -8,7 +8,7 @@
 
 user = User.create!(password: "123123", email: "hi", name: "chris", temp_offset: 0, zipcode: "94015")
 #TOPS
-t1 = Article.create!(user_id: user.id, article_type: "top", title: "top1", color: 'pink', formality: 1, rain: true, clouds: true, snow: false, wind: true)
+t1 = Article.create!(user_id: user.id, article_type: "top", title: "Atmosphere concert T-shirt", color: 'black', formality: 1, rain: true, clouds: true, snow: false, wind: true)
 t2 = Article.create!(user_id: user.id, article_type: "top", title: "top2", color: 'red', formality: 2, rain: false, clouds: true, snow: false, wind: false)
 t3 = Article.create!(user_id: user.id, article_type: "top", title: "top3", color: 'green', formality: 3, rain: false, clouds: true, snow: false, wind: true)
 t4 = Article.create!(user_id: user.id, article_type: "top", title: "top4", color: 'blue', formality: 4, rain: false, clouds: true, snow: false, wind: false)

@@ -23,7 +23,7 @@ export default class ArticleListItem extends React.Component {
   render() {
     return (
       <div onClick={this._clicked}className="article-list-item">
-        {this.state.item.title}
+        Title: {this.state.item.title}
       </div>
     )
   }
