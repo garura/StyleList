@@ -1,5 +1,5 @@
 import React from 'react'
-import AppDispatcher from '../dispatcher/dispatcher'
+import ApiUtil from '../util/apiUtil'
 import OutfitStore from '../stores/outfitStore'
 import OutfitFilter from './outfitFilter'
 
@@ -21,20 +21,11 @@ export default class OutfitsIndex extends React.Component {
 
   componentDidMount() {
     this.outfitToken = OutfitStore.addListener(this._onChange);
-    // convert this to action call
-    $.ajax({
-      url: 'api/outfits',
-      method: 'GET',
-      success: (response) => {
-        AppDispatcher.dispatch({
-          actionType: "RECEIVE_OUTFITS",
-          outfits: response
-        });
-      },
-      error: (response) => {
-        debugger;
-      }
-    })
+    ApiUtil.fetchOutfits();
+  }
+
+  componentWillUnmount() {
+    this.outfitToken.remove();
   }
 
   render() {
