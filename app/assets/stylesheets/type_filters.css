@@ -8,12 +8,24 @@
   border: 1px solid lightgreen;
 }
 .filter-options {
-  display: inline-block;
+  display: flex;
   background-color: #e6e6ff;
   border: 1px solid red;
   float: right;
   width: 60%;
   min-width: 400px;
+}
+
+.filter-weather {
+  background-color: lightyellow;
+}
+
+.filter-colors {
+
+}
+
+.filter-formality {
+  background-color: pink;
 }
 
 .isHidden {
@@ -28,13 +40,14 @@
 
 .color-checkbox {
   /*background-color: lightblue;*/
+  
 }
 
 .color-checkbox span {
   display: inline-block;
-  margin: 4px;
-  width: 10px;
-  height: 10px;
+  margin: 1px;
+  width: 15px;
+  height: 15px;
   /*background-color: lightblue;*/
   border: 3px;
   border-style: outset;
@@ -42,18 +55,70 @@
   /*border-radius: 2px;*/
 }
 
-.color-checkbox.white span {
-  background-color: white;
-}
+
 
 .color-checkbox.red span {
   background-color: red;
 }
 
+.color-checkbox.orange span {
+  background-color: orange;
+}
+
+.color-checkbox.yellow span {
+  background-color: yellow;
+}
+
+.color-checkbox.green span {
+  background-color: green;
+}
+
+.color-checkbox.blue span {
+  background-color: blue;
+}
+
+.color-checkbox.purple span {
+  background-color: purple;
+}
+
+.color-checkbox.pink span {
+  background-color: green;
+}
+
+.color-checkbox.brown span {
+  background-color: brown;
+}
+
+.color-checkbox.white span {
+  background-color: white;
+}
+
+.color-checkbox.grey span {
+  background-color: grey;
+}
+
+.color-checkbox.black span {
+  background-color: black;
+}
+
+/*.color-checkbox.denim span {
+  background-color: denim;
+}*/
+
+.color-checkbox.patterned span {
+  background-color:black;
+  background-image:
+    radial-gradient(circle at 100% 150%, black 24%, white 25%, white 28%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent),
+    radial-gradient(circle at 0    150%, black 24%, white 25%, white 28%, black 29%, black 36%, white 36%, white 40%, transparent 40%, transparent),
+    radial-gradient(circle at 50%  100%, white 10%, black 11%, black 23%, white 24%, white 30%, black 31%, black 43%, white 44%, white 50%, black 51%, black 63%, white 64%, white 71%, transparent 71%, transparent),
+    radial-gradient(circle at 100% 50%, white 5%, black 6%, black 15%, white 16%, white 20%, black 21%, black 30%, white 31%, white 35%, black 36%, black 45%, white 46%, white 49%, transparent 50%, transparent),
+    radial-gradient(circle at 0    50%, white 5%, black 6%, black 15%, white 16%, white 20%, black 21%, black 30%, white 31%, white 35%, black 36%, black 45%, white 46%, white 49%, transparent 50%, transparent);
+}
+
 .color-checkbox.unchecked span {
   background-color: #e6e6ff;
   border-style: inset;
-
+  background: none;
 }
 
 

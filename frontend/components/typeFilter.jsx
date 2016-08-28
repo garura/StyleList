@@ -53,7 +53,6 @@ export default class TypeFilter extends React.Component {
   }
 
   weatherElements() {
-    // check if weather is applied, if no disable buttons
     return (
       <div className='filter-weather unselected'>
         <p onClick={this._applyFilter}>Weather</p>
@@ -79,11 +78,16 @@ export default class TypeFilter extends React.Component {
   }
 
   colorElements() {
+    let colorChoices = ["red", "orange", "yellow", "green", "blue", "purple", "pink", "brown","white", "grey", "black", "denim", "patterned"]
+    let checkboxes = colorChoices.map((color) => {
+      return (
+        <label onClick={this._toggleCheckedColor} className={"color-checkbox " + color +" unchecked"}><span></span>{color}</label>
+      )
+    })
     return (
       <div className='filter-colors unselected'>
         <p onClick={this._applyFilter}>Colors</p>
-        <label onClick={this._toggleCheckedColor} className="color-checkbox white unchecked"><span></span>white</label>
-        <label onClick={this._toggleCheckedColor} className="color-checkbox red unchecked"><span></span>red</label>
+        {checkboxes}
       </div>
     )
   }

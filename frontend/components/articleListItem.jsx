@@ -10,7 +10,8 @@ export default class ArticleListItem extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState({item: newProps.item})
+    this.setState({item: newProps.item,
+                  clicked: newProps.onClick})
   }
 
   _clicked(event) {
