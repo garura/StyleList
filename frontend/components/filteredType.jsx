@@ -16,11 +16,13 @@ export default class FilteredType extends React.Component {
     this._changeFocus = this._changeFocus.bind(this)
   }
   componentWillReceiveProps(newProps){
-    let toDisplay = ArticleStore.getInfo(newProps.type.toLowerCase(), newProps.ids)
-    this.setState({displayed: newProps.ids,
-                  type: newProps.type,
-                  items: toDisplay,
-                  focus: {}})
+    if (newProps.ids !== this.state.displayed) {
+      let toDisplay = ArticleStore.getInfo(newProps.type.toLowerCase(), newProps.ids)
+      this.setState({displayed: newProps.ids,
+        type: newProps.type,
+        items: toDisplay,
+        focus: {}})
+    }
   }
 
   _changeFocus(item) {

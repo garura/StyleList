@@ -32,10 +32,10 @@
 
 .color-checkbox span {
   display: inline-block;
-  margin: 4px;
-  width: 10px;
-  height: 10px;
-  /*background-color: lightblue;*/
+  margin: 1px;
+  width: 15px;
+  height: 15px;
+  background-color: lightblue;
   border: 3px;
   border-style: outset;
   border-color: white;
