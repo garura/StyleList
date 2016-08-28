@@ -1,4 +1,5 @@
 import React from 'react'
+import linkState from 'react-link-state'
 import ArticleStore from '../stores/articleStore'
 import FilteredType from './filteredType'
 
@@ -123,6 +124,7 @@ export default class TypeFilter extends React.Component {
           </div>
           <div className='filter-colors'>
             <p onClick={this._applyFilter}>Colors</p>
+            <input type="checkbox" checkedLink={linkState(this, 'color.white')}/>
           </div>
           <button onClick={this._updateFilter}>Apply Filter</button>
         </div>
