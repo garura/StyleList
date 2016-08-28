@@ -19,7 +19,8 @@ export default class FilteredType extends React.Component {
     let toDisplay = ArticleStore.getInfo(newProps.type.toLowerCase(), newProps.ids)
     this.setState({displayed: newProps.ids,
                   type: newProps.type,
-                  items: toDisplay})
+                  items: toDisplay,
+                  focus: {}})
   }
 
   _changeFocus(item) {
@@ -32,10 +33,10 @@ export default class FilteredType extends React.Component {
   _generateList(){
     if (this.state.type) {
       let that = this;
-      return this.state.items.map((item) => {
+      return this.state.items.map((item, index) => {
         let callback = that._changeFocus(item)
         // feels hacky ^
-        return <ArticleListItem onClick={callback} item={item} />
+        return <ArticleListItem key={index} onClick={callback} item={item} />
       });
     }
     return;

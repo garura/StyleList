@@ -43,7 +43,8 @@ export default class TypeFilter extends React.Component {
     }
     this._applyFilter = this._applyFilter.bind(this);
     this._updateFilter = this._updateFilter.bind(this);
-    this._toggleClass = this._toggleClass.bind(this);
+    this._toggleHidden = this._toggleHidden.bind(this);
+    this._toggleCheckedColor = this._toggleCheckedColor.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -54,7 +55,7 @@ export default class TypeFilter extends React.Component {
   weatherElements() {
     // check if weather is applied, if no disable buttons
     return (
-      <div className='filter-weather'>
+      <div className='filter-weather unselected'>
         <p onClick={this._applyFilter}>Weather</p>
         <div className='weather-buttons'>
           <button id='rain' onClick={this._applyFilter}>Rain</button>
@@ -62,6 +63,27 @@ export default class TypeFilter extends React.Component {
           <button onClick={this._applyFilter}>Wind</button>
           <button onClick={this._applyFilter}>Snow</button>
         </div>
+      </div>
+    )
+  }
+
+  _toggleCheckedColor(event) {
+    event.preventDefault()
+    if (this.state.applied.colors) {
+      let tar = $(event.currentTarget);
+      let color = this.state.color
+      color[tar.text()] = !color[tar.text()]
+      tar.toggleClass('unchecked');
+      this.setState({color: color});
+    }
+  }
+
+  colorElements() {
+    return (
+      <div className='filter-colors unselected'>
+        <p onClick={this._applyFilter}>Colors</p>
+        <label onClick={this._toggleCheckedColor} className="color-checkbox white unchecked"><span></span>white</label>
+        <label onClick={this._toggleCheckedColor} className="color-checkbox red unchecked"><span></span>red</label>
       </div>
     )
   }
@@ -76,11 +98,11 @@ export default class TypeFilter extends React.Component {
       case 'Weather':
       case 'Formality':
       case 'Colors':
+        $(event.currentTarget).parent().toggleClass('unselected');
         newValue = this.state.applied;
         propName = event.target.innerText.toLowerCase();
         newValue[propName] = !newValue[propName];
         this.setState({applied: newValue})
-        console.log(newValue[propName]);
         break;
       case 'Rain':
       case 'Clouds':
@@ -90,7 +112,6 @@ export default class TypeFilter extends React.Component {
         propName = event.target.innerText.toLowerCase();
         newValue[propName] = !newValue[propName];
         this.setState({weather: newValue})
-        console.log(newValue[propName], propName);
         break;
     }
   }
@@ -104,7 +125,7 @@ export default class TypeFilter extends React.Component {
     let filteredIds = ArticleStore.filterArticles(filtertype, applied, weather, color, formality);
     this.setState({filteredIds: filteredIds});
   }
-  _toggleClass(event) {
+  _toggleHidden(event) {
     event.preventDefault();
     $('.filter-options.' + this.state.type).toggleClass('isHidden');
     $('.viewable-articles.' + this.state.type).toggleClass('isHidden');
@@ -115,17 +136,14 @@ export default class TypeFilter extends React.Component {
       <div className='type-filter'>
         <div className="filter-header">
           <p>{this.state.type} ({this.state.displayed.length})</p>
-          <button onClick={this._toggleClass}>Show All</button>
+          <button onClick={this._toggleHidden}>Show All</button>
         </div>
         <div className={"filter-options " + this.state.type}>
           {this.weatherElements()}
-          <div className='filter-formality'>
+          <div className='filter-formality unselected'>
             <p onClick={this._applyFilter}>Formality</p>
           </div>
-          <div className='filter-colors'>
-            <p onClick={this._applyFilter}>Colors</p>
-            <input type="checkbox" checkedLink={linkState(this, 'color.white')}/>
-          </div>
+          {this.colorElements()}
           <button onClick={this._updateFilter}>Apply Filter</button>
         </div>
         <FilteredType type={this.state.type} ids={this.state.filteredIds}/>
@@ -134,3 +152,5 @@ export default class TypeFilter extends React.Component {
     )
   }
 }
+
+//<input type="checkbox" checkedLink={linkState(this, 'color.white')}/>
