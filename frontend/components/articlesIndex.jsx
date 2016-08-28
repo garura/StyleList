@@ -1,6 +1,6 @@
 import React from 'react'
 import ArticleStore from '../stores/articleStore'
-import AppDispatcher from '../dispatcher/dispatcher'
+import ApiUtil from '../util/apiUtil'
 import TypeFilter from './typeFilter'
 
 export default class ArticlesIndex extends React.Component {
@@ -35,20 +35,10 @@ export default class ArticlesIndex extends React.Component {
 
   componentDidMount() {
     this.articleToken = ArticleStore.addListener(this._onChange);
-    // convert this to action call
-    $.ajax({
-      url: 'api/articles',
-      method: 'GET',
-      success: (response) => {
-        AppDispatcher.dispatch({
-          actionType: "RECEIVE_ARTICLES",
-          articles: response
-        });
-      },
-      error: (response) => {
-        debugger;
-      }
-    })
+    ApiUtil.fetchArticles();
+  }
+  componentWillUnmount() {
+    this.articleToken.remove();
   }
 
   render() {

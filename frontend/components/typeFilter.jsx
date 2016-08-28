@@ -64,7 +64,10 @@ export default class TypeFilter extends React.Component {
     return (
       <div className='filter-weather unselected'>
         <p className='filter-title' onClick={this._applyFilter}>Weather</p>
-        <p className='filter-selection'>{weatherKey[this.state.weather.temp]}</p>
+        <label className="weather-input">
+          <p className='filter-selection'>{weatherKey[this.state.weather.temp]}</p>
+          <input type="range" min={1} max={5} defaultValue={3} onChange={this._applyFilter}/>
+        </label>
         <div className='weather-buttons'>
           <button id='rain' onClick={this._applyFilter}>Rain</button>
           <button onClick={this._applyFilter}>Clouds</button>
@@ -128,6 +131,11 @@ export default class TypeFilter extends React.Component {
         this.setState({weather: newValue})
         break;
     }
+    if (event.target.value) {
+      newValue = this.state.weather;
+      newValue["temp"] = parseInt(event.target.value)
+      this.setState({weather: newValue})
+    }
   }
   _updateFilter(event) {
     event.preventDefault();
@@ -150,7 +158,6 @@ export default class TypeFilter extends React.Component {
   }
 
   render() {
-    // debugger;
     let showText = this.state.showing === true ? "Hide" : "Show";
     return (
       <div className='type-filter'>
@@ -167,7 +174,6 @@ export default class TypeFilter extends React.Component {
           {this.colorElements()}
         </div>
         <FilteredType type={this.state.type} ids={this.state.filteredIds}/>
-
       </div>
     )
   }
