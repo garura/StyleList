@@ -1,4 +1,6 @@
 import React from 'react'
+import ArticleStore from '../stores/articleStore'
+import ArticleListItem from './articleListItem'
 
 export default class FilteredType extends React.Component {
   constructor(props){
@@ -14,18 +16,22 @@ export default class FilteredType extends React.Component {
                   type: newProps.type});
   }
   _generateList(){
-    return this.state.displayed.map((id) => {
-      return <li>{id}</li>
-    });
+    if (this.state.type) {
+      let toDisplay = ArticleStore.getInfo(this.state.type.toLowerCase(), this.state.displayed)
+      return toDisplay.map((item) => {
+        return <ArticleListItem item={item} />
+      });
+    }
+    return;
   }
   render () {
     let list = this._generateList();
     return (
       <div className={"viewable-articles " + this.state.type}>
-        Im the viewable items
-        <ul>
+        <ul className="scroll-list">
           {list}
         </ul>
+        <div className="article-detail">detail view</div>
       </div>
     )
   }

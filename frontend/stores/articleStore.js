@@ -16,6 +16,15 @@ articleStore.getArticles = () => {
   return _articles;
 }
 
+articleStore.getInfo = (type, ids) => {
+  let result = []
+  ids.forEach((id) => {
+    result.push(_articles[type][id]);
+  })
+
+  return result;
+}
+
 let invalidWeather = (weather, item) => {
   if (weather.rain === true && item.rain === false) {
     return true;

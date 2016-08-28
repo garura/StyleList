@@ -1,5 +1,7 @@
 .type-filter {
   background-color: white;
+  border: 1px solid orange;
+  min-height: 100px;
 }
 .filter-header {
   display: inline-block;
@@ -9,6 +11,8 @@
   display: inline-block;
   border: 1px solid red;
   float: right;
+  width: 60%;
+  min-width: 400px;
 }
 
 .isHidden {

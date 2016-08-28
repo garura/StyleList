@@ -2,4 +2,8 @@
   background-color: grey;
   vertical-align: top;
   display: inline-block;
+  width: 70vw;
+  min-width: 600px;
+  margin: 30px;
+  margin-top: 81px;
 }
