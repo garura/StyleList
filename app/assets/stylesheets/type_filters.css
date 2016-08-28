@@ -9,6 +9,7 @@
 }
 .filter-options {
   display: inline-block;
+  background-color: #e6e6ff;
   border: 1px solid red;
   float: right;
   width: 60%;
@@ -17,6 +18,42 @@
 
 .isHidden {
   display: none;
+}
+
+.unselected {
+  color: grey;
+  /*font-weight: bold;*/
+  /*text-decoration: none;*/
+}
+
+.color-checkbox {
+  /*background-color: lightblue;*/
+}
+
+.color-checkbox span {
+  display: inline-block;
+  margin: 4px;
+  width: 10px;
+  height: 10px;
+  /*background-color: lightblue;*/
+  border: 3px;
+  border-style: outset;
+  border-color: white;
+  /*border-radius: 2px;*/
+}
+
+.color-checkbox.white span {
+  background-color: white;
+}
+
+.color-checkbox.red span {
+  background-color: red;
+}
+
+.color-checkbox.unchecked span {
+  background-color: #e6e6ff;
+  border-style: inset;
+
 }
 
 

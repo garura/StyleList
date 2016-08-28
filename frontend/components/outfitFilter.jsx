@@ -32,7 +32,7 @@ export default class OutfitFilter extends React.Component {
   weatherElements() {
     // check if weather is applied, if no disable buttons
     return (
-      <div className='filter-weather'>
+      <div className='filter-weather unselected'>
         <p onClick={this._applyFilter}>Weather</p>
         <div className='weather-buttons'>
           <button id='rain' onClick={this._applyFilter}>Rain</button>
@@ -52,6 +52,7 @@ export default class OutfitFilter extends React.Component {
     switch (event.target.innerText) {
       case 'Weather':
       case 'Formality':
+        $(event.currentTarget).parent().toggleClass('unselected');
         newValue = this.state.applied;
         propName = event.target.innerText.toLowerCase();
         newValue[propName] = !newValue[propName];
@@ -92,9 +93,9 @@ export default class OutfitFilter extends React.Component {
           <p>{this.state.type} ({this.state.displayed.length})</p>
           <button onClick={this._toggleClass}>Show All</button>
         </div>
-        <div className={"filter-options " + this.state.type}>
+        <div className={"filter-options"}>
           {this.weatherElements()}
-          <div className='filter-formality'>
+          <div className='filter-formality unselected'>
             <p onClick={this._applyFilter}>Formality</p>
           </div>
           <button onClick={this._updateFilter}>Apply Filter</button>
