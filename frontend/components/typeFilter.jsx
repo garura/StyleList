@@ -53,9 +53,21 @@ export default class TypeFilter extends React.Component {
   }
 
   weatherElements() {
+    let temperature  = this.state.weather.temp
+    let scale = {
+      1: "Freezing",
+      2: "Chilly",
+      3: "Cold",
+      4: "Warm",
+      5: "Hot"
+    }
     return (
       <div className='filter-weather unselected'>
         <p onClick={this._applyFilter}>Weather</p>
+        <label className="weather-input">
+          {scale[temperature]}
+          <input type="range" min={1} max={5} defaultValue={3} onChange={this._applyFilter}/>
+        </label>
         <div className='weather-buttons'>
           <button id='rain' onClick={this._applyFilter}>Rain</button>
           <button onClick={this._applyFilter}>Clouds</button>
@@ -118,6 +130,11 @@ export default class TypeFilter extends React.Component {
         this.setState({weather: newValue})
         break;
     }
+    if (event.target.value) {
+      newValue = this.state.weather;
+      newValue["temp"] = parseInt(event.target.value)
+      this.setState({weather: newValue})
+    }
   }
   _updateFilter(event) {
     event.preventDefault();
@@ -136,6 +153,7 @@ export default class TypeFilter extends React.Component {
   }
 
   render() {
+    console.log(this.state.weather.temp);
     return (
       <div className='type-filter'>
         <div className="filter-header">
