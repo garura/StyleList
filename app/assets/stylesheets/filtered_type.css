@@ -1,23 +1,30 @@
 .viewable-articles {
-  border: 1px solid pink;
+  border-top: 1px solid black;
   display: block;
   clear: right;
   max-height: 300px;
+  border-bottom: none;
+  /*border-bottom-right-radius: 3px;*/
   /*overflow: scroll;*/
 }
 
 .scroll-list {
   display: inline-block;
+  border-bottom: none;
   width: 50%;
   overflow: scroll;
   max-height: 300px;
   background-color: lightgreen;
+  border-bottom-left-radius: 3px;
 }
 
 .article-detail {
   /*position: absolute;*/
   display: inline-block;
+  min-height: 300px;
   width: 50%;
   /*max*/
   background-color: lightblue;
+  border-bottom: 1px solid black;
+  border-bottom-right-radius: 3px;
 }

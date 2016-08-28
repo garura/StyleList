@@ -3,6 +3,14 @@ import linkState from 'react-link-state'
 import ArticleStore from '../stores/articleStore'
 import FilteredType from './filteredType'
 
+let weatherKey = {
+  1: "Freezing",
+  2: "Cold",
+  3: "Chilly",
+  4: "Warm",
+  5: "Hot"
+}
+
 export default class TypeFilter extends React.Component {
 
   constructor(props) {
@@ -38,8 +46,8 @@ export default class TypeFilter extends React.Component {
         patterned: false
       },
       formality: 3,
-      filteredIds: props.displayed
-
+      filteredIds: props.displayed,
+      showing: true
     }
     this._applyFilter = this._applyFilter.bind(this);
     this._updateFilter = this._updateFilter.bind(this);
@@ -55,7 +63,8 @@ export default class TypeFilter extends React.Component {
   weatherElements() {
     return (
       <div className='filter-weather unselected'>
-        <p onClick={this._applyFilter}>Weather</p>
+        <p className='filter-title' onClick={this._applyFilter}>Weather</p>
+        <p className='filter-selection'>{weatherKey[this.state.weather.temp]}</p>
         <div className='weather-buttons'>
           <button id='rain' onClick={this._applyFilter}>Rain</button>
           <button onClick={this._applyFilter}>Clouds</button>
@@ -68,6 +77,7 @@ export default class TypeFilter extends React.Component {
 
   _toggleCheckedColor(event) {
     event.preventDefault()
+    event.stopPropagation()
     if (this.state.applied.colors) {
       let tar = $(event.currentTarget);
       let color = this.state.color
@@ -79,14 +89,14 @@ export default class TypeFilter extends React.Component {
 
   colorElements() {
     let colorChoices = ["red", "orange", "yellow", "green", "blue", "purple", "pink", "brown","white", "grey", "black", "denim", "patterned"]
-    let checkboxes = colorChoices.map((color) => {
+    let checkboxes = colorChoices.map((color, index) => {
       return (
-        <label onClick={this._toggleCheckedColor} className={"color-checkbox " + color +" unchecked"}><span></span>{color}</label>
+        <label key={index} onClick={this._toggleCheckedColor} className={"color-checkbox " + color +" unchecked"}><span></span>{color}</label>
       )
     })
     return (
       <div className='filter-colors unselected'>
-        <p onClick={this._applyFilter}>Colors</p>
+        <p className='filter-title' onClick={this._applyFilter}>Colors</p>
         {checkboxes}
       </div>
     )
@@ -94,7 +104,7 @@ export default class TypeFilter extends React.Component {
 
   _applyFilter(event) {
     event.preventDefault()
-
+    event.stopPropagation()
     let newValue;
     let propName;
 
@@ -121,6 +131,7 @@ export default class TypeFilter extends React.Component {
   }
   _updateFilter(event) {
     event.preventDefault();
+    event.stopPropagation()
     let filtertype = this.state.type.toLowerCase();
     let applied = this.state.applied;
     let weather = this.state.weather;
@@ -131,24 +142,29 @@ export default class TypeFilter extends React.Component {
   }
   _toggleHidden(event) {
     event.preventDefault();
+    // event.stopPropagation()
     $('.filter-options.' + this.state.type).toggleClass('isHidden');
     $('.viewable-articles.' + this.state.type).toggleClass('isHidden');
+    let show = !this.state.showing
+    this.setState({showing: show})
   }
 
   render() {
+    // debugger;
+    let showText = this.state.showing === true ? "Hide" : "Show";
     return (
       <div className='type-filter'>
         <div className="filter-header">
           <p>{this.state.type} ({this.state.displayed.length})</p>
-          <button onClick={this._toggleHidden}>Show All</button>
+          <button onClick={this._toggleHidden}>{showText}</button>
         </div>
-        <div className={"filter-options " + this.state.type}>
+        <div onClick={this._updateFilter} className={"filter-options " + this.state.type}>
+          <button className='filter-apply' >Apply Filters</button>
           {this.weatherElements()}
           <div className='filter-formality unselected'>
-            <p onClick={this._applyFilter}>Formality</p>
+            <p className='filter-title' onClick={this._applyFilter}>Formality</p>
           </div>
           {this.colorElements()}
-          <button onClick={this._updateFilter}>Apply Filter</button>
         </div>
         <FilteredType type={this.state.type} ids={this.state.filteredIds}/>
 
