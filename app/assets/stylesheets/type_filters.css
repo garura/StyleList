@@ -13,6 +13,7 @@
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   background-color: #206dc5;
+  justify-content: space-between;
   color: white;
   border-bottom: 1px solid black;
 }
@@ -21,11 +22,19 @@
   display: inline-block;
   font-size: 25px;
   padding: 10px;
+  width: 100px;
 }
 
-.filter-header button {
-  margin-left: 10px;
+.show-button {
+  width: 100px;
+  padding: 10px;
+  text-align: right;
 }
+/*
+.filter-header button {
+  margin-right: 10px;
+  padding: 10px;
+}*/
 
 .filter-header button:hover {
   color: lightblue;
@@ -46,9 +55,9 @@
   border-radius: 4px;
   padding: 5px;
   text-align: center;
-  height: 40px;
+  height: 20px;
   margin: auto auto;
-  width: 40px;
+  /*width: 40px;*/
   background-color: red;
   color: white;
 
@@ -56,8 +65,9 @@
 
 .filter-title {
   width: 100%;
-  font-size: 20px;
+  font-size: 25px;
   text-align: center;
+
 }
 
 .filter-title:hover {
@@ -66,15 +76,54 @@
 }
 
 .filter-selection {
-  display: block;
+  /*display: block;*/
+  text-align: center;
+  margin-bottom: 0px;
+  width: 100%;
+
+}
+
+.weather-input input {
+  width: 200px;
+}
+
+.weather-input p {
+  margin: auto 0px;
 }
 
 .filter-weather {
-  display: inline-block;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*flex-wrap: wrap;*/
   background-color: lightyellow;
   padding: 5px;
   min-width: 150px;
   border-left: 1px solid black;
+}
+
+.weather-input {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.weather-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.weather-buttons button{
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+  width: 70px;
+}
+
+.checked {
+  background-color: white;
 }
 
 .filter-colors {
@@ -94,10 +143,28 @@
 }
 
 .filter-formality {
+  /*display: flex;*/
+  /*flex-wrap: wrap;*/
+  /*justify-content: center;*/
   background-color: pink;
   padding: 5px;
   min-width: 150px;
   border-left: 1px solid black;
+}
+
+.formality-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.formality-buttons button {
+  text-align: center;
+  width: 60px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 3px;
 }
 
 .isHidden {
@@ -106,6 +173,7 @@
 
 .unselected {
   color: grey;
+  font-weight:lighter;
 }
 
 .color-checkbox {
