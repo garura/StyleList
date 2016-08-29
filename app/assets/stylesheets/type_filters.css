@@ -3,7 +3,7 @@
   border: 1px solid black;
   border-radius: 5px;
   min-height: 100px;
-  min-width: 600px;
+  min-width: 650px;
   margin-bottom: 20px;
 }
 
@@ -13,6 +13,7 @@
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   background-color: #206dc5;
+  justify-content: space-between;
   color: white;
   border-bottom: 1px solid black;
 }
@@ -21,23 +22,23 @@
   display: inline-block;
   font-size: 25px;
   padding: 10px;
+  width: 150px;
 }
 
-.filter-header button {
-  margin-left: 10px;
+.show-button {
+  width: 150px;
+  padding: 10px;
+  text-align: right;
 }
 
 .filter-header button:hover {
   color: lightblue;
 }
 
-
 .filter-options {
   display: flex;
   justify-content: center;
-  /*background-color: lightgrey;*/
-  /*float: right;*/
-  width: 100%;
+  padding: 10px 10px 0px 10px;
   min-width: 400px;
 }
 
@@ -46,46 +47,83 @@
   border-radius: 4px;
   padding: 5px;
   text-align: center;
-  height: 40px;
+  height: 20px;
   margin: auto auto;
-  width: 40px;
   background-color: red;
   color: white;
-
 }
 
 .filter-title {
   width: 100%;
-  font-size: 20px;
+  font-size: 25px;
   text-align: center;
+  border-bottom: 5px solid white;
 }
 
 .filter-title:hover {
   cursor: pointer;
-  color: black;
+  color: red;
 }
 
 .filter-selection {
-  display: block;
+  text-align: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+
+/* weather */
+
+.weather-input input {
+  width: 70%
+}
+
+.weather-input p {
+  margin: auto 0px;
+}
+
+.weather-icon {
+  width: 10px;
 }
 
 .filter-weather {
-  display: inline-block;
-  background-color: lightyellow;
-  padding: 5px;
+  background-color: #ccccff;
+  border-radius: 4px;
   min-width: 150px;
-  border-left: 1px solid black;
+}
+
+.weather-input {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.weather-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.weather-button {
+  background-color: darkgrey;
+  border-radius: 3px;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  width: 90px;
 }
 
 .filter-colors {
   background-color: #ccccff;
-  padding: 5px;
+  border-radius: 4px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   max-width: 450px;
   min-width: 200px;
-  border-left: 1px solid black;
 }
 
 .filter-colors label {
@@ -93,11 +131,35 @@
   min-width: 80px;
 }
 
+
+/* forality */
+
 .filter-formality {
-  background-color: pink;
-  padding: 5px;
+  border-radius: 4px;
+  background-color: #ccccff;
+  margin: 0px 10px;
   min-width: 150px;
-  border-left: 1px solid black;
+}
+
+.formality-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.formality-button {
+  background-color: darkgrey;
+  text-align: center;
+  width: 60px;
+  height: 36px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 3px;
+}
+
+.checked {
+  background-color: white;
 }
 
 .isHidden {
@@ -106,10 +168,15 @@
 
 .unselected {
   color: grey;
+  font-weight:lighter;
 }
+
+
+/* color */
 
 .color-checkbox {
   padding: 5px;
+  width: 87px;
 }
 
 .color-checkbox span {
@@ -121,10 +188,7 @@
   border: 3px;
   border-style: outset;
   border-color: white;
-  /*border-radius: 2px;*/
 }
-
-
 
 .color-checkbox.red span {
   background-color: red;
@@ -170,9 +234,9 @@
   background-color: black;
 }
 
-/*.color-checkbox.denim span {
-  background-color: denim;
-}*/
+.color-checkbox.denim span {
+  background-color: darkblue;
+}
 
 .color-checkbox.patterned span {
   background-color:black;
@@ -188,8 +252,4 @@
   background-color: #e6e6ff;
   border-style: inset;
   background: none;
-}
-
-
-#rain {
 }

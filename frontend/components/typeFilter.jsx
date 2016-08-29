@@ -11,6 +11,14 @@ let weatherKey = {
   5: "Hot"
 }
 
+let formalityKey = {
+  1: "Ultra Casual",
+  2: "Casual",
+  3: "Business Casual",
+  4: "Semi-formal",
+  5: "Formal"
+}
+
 export default class TypeFilter extends React.Component {
 
   constructor(props) {
@@ -19,7 +27,7 @@ export default class TypeFilter extends React.Component {
       type: props.type,
       displayed: props.displayed,
       applied: {
-        weather: false,
+        weather: true,
         colors: false,
         formality: false
       },
@@ -45,7 +53,7 @@ export default class TypeFilter extends React.Component {
         brown: false,
         patterned: false
       },
-      formality: 3,
+      formality: 2,
       filteredIds: props.displayed,
       showing: true
     }
@@ -53,6 +61,7 @@ export default class TypeFilter extends React.Component {
     this._updateFilter = this._updateFilter.bind(this);
     this._toggleHidden = this._toggleHidden.bind(this);
     this._toggleCheckedColor = this._toggleCheckedColor.bind(this);
+    this._updateFormality = this._updateFormality.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -62,17 +71,49 @@ export default class TypeFilter extends React.Component {
 
   weatherElements() {
     return (
-      <div className='filter-weather unselected'>
+      <div className='filter-weather'>
         <p className='filter-title' onClick={this._applyFilter}>Weather</p>
-        <label className="weather-input">
+        <div className="weather-input">
           <p className='filter-selection'>{weatherKey[this.state.weather.temp]}</p>
-          <input type="range" min={1} max={5} defaultValue={3} onChange={this._applyFilter}/>
-        </label>
+          <p className='weather-icon'>&#10052;</p>
+          <input className={this.state.type} type="range" min={1} max={5} defaultValue={3} onChange={this._applyFilter}/>
+          <p className='weather-icon'>&#9728;</p>
+        </div>
+
         <div className='weather-buttons'>
-          <button id='rain' onClick={this._applyFilter}>Rain</button>
-          <button onClick={this._applyFilter}>Clouds</button>
-          <button onClick={this._applyFilter}>Wind</button>
-          <button onClick={this._applyFilter}>Snow</button>
+          <button className={"weather-button " + (this.state.weather.rain ? "checked" : "")} onClick={this._applyFilter}>Rain</button>
+          <button className={"weather-button " + (this.state.weather.clouds ? "checked" : "")} onClick={this._applyFilter}>Clouds</button>
+          <button className={"weather-button " + (this.state.weather.wind ? "checked" : "")} onClick={this._applyFilter}>Wind</button>
+          <button className={"weather-button " + (this.state.weather.snow ? "checked" : "")} onClick={this._applyFilter}>Snow</button>
+        </div>
+      </div>
+    )
+  }
+
+  _updateFormality(event) {
+    event.preventDefault();
+    // event.stopPropagation();
+    if (this.state.applied.formality) {
+      let tar = $(event.currentTarget);
+      tar.siblings().each((index, button) => {
+        button.className = "formality-button";
+      });
+      tar.addClass('checked');
+      this.setState({formality: parseInt(tar.attr("data"))})
+    }
+  }
+
+  formalityElements() {
+    return (
+      <div className='filter-formality unselected'>
+        <p className='filter-title' onClick={this._applyFilter}>Formality</p>
+        <p className='filter-selection'>{formalityKey[this.state.formality]}</p>
+        <div className="formality-buttons">
+          <button className="formality-button" data={1} onClick={this._updateFormality}>Ultra Casual</button>
+          <button className="formality-button checked" data={2} onClick={this._updateFormality}>Casual</button>
+          <button className="formality-button" data={3} onClick={this._updateFormality}>Business Casual</button>
+          <button className="formality-button" data={4} onClick={this._updateFormality}>Semi-formal</button>
+          <button className="formality-button" data={5} onClick={this._updateFormality}>Formal</button>
         </div>
       </div>
     )
@@ -113,6 +154,9 @@ export default class TypeFilter extends React.Component {
 
     switch (event.target.innerText) {
       case 'Weather':
+        let slider = $(".weather-input>." + this.state.type);
+        let disabled = !(slider.prop('disabled'));
+        slider.prop('disabled', disabled);
       case 'Formality':
       case 'Colors':
         $(event.currentTarget).parent().toggleClass('unselected');
@@ -125,16 +169,20 @@ export default class TypeFilter extends React.Component {
       case 'Clouds':
       case 'Snow':
       case 'Wind':
-        newValue = this.state.weather;
-        propName = event.target.innerText.toLowerCase();
-        newValue[propName] = !newValue[propName];
-        this.setState({weather: newValue})
+        if (this.state.applied.weather) {
+          newValue = this.state.weather;
+          propName = event.target.innerText.toLowerCase();
+          newValue[propName] = !newValue[propName];
+          this.setState({weather: newValue})
+        }
         break;
     }
     if (event.target.value) {
-      newValue = this.state.weather;
-      newValue["temp"] = parseInt(event.target.value)
-      this.setState({weather: newValue})
+      if (this.state.applied.weather) {
+        newValue = this.state.weather;
+        newValue["temp"] = parseInt(event.target.value)
+        this.setState({weather: newValue})
+      }
     }
   }
   _updateFilter(event) {
@@ -153,6 +201,7 @@ export default class TypeFilter extends React.Component {
     // event.stopPropagation()
     $('.filter-options.' + this.state.type).toggleClass('isHidden');
     $('.viewable-articles.' + this.state.type).toggleClass('isHidden');
+    $('.filter-apply.' + this.state.type).toggleClass('isHidden');
     let show = !this.state.showing
     this.setState({showing: show})
   }
@@ -163,14 +212,12 @@ export default class TypeFilter extends React.Component {
       <div className='type-filter'>
         <div className="filter-header">
           <p>{this.state.type} ({this.state.displayed.length})</p>
-          <button onClick={this._toggleHidden}>{showText}</button>
+          <button onClick={this._updateFilter} className={'filter-apply ' + this.state.type} >Apply Filters</button>
+          <button className='show-button' onClick={this._toggleHidden}>{showText}</button>
         </div>
-        <div onClick={this._updateFilter} className={"filter-options " + this.state.type}>
-          <button className='filter-apply' >Apply Filters</button>
+        <div className={"filter-options " + this.state.type}>
           {this.weatherElements()}
-          <div className='filter-formality unselected'>
-            <p className='filter-title' onClick={this._applyFilter}>Formality</p>
-          </div>
+          {this.formalityElements()}
           {this.colorElements()}
         </div>
         <FilteredType type={this.state.type} ids={this.state.filteredIds}/>

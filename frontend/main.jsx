@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, Link, hashHistory } from 'react-router'
+import { Router, Route, Link, hashHistory, IndexRoute } from 'react-router'
 import App from './components/app'
 import ArticlesIndex from './components/articlesIndex'
 import OutfitsIndex from './components/outfitsIndex'
@@ -21,3 +21,5 @@ document.addEventListener("DOMContentLoaded", () => {
       )
   }
 });
+
+// <IndexRoute component={ArticlesIndex}/>

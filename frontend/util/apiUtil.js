@@ -25,6 +25,15 @@ const ApiUtil = {
         // debugger;
       }
     });
+  },
+  logOutUser: () => {
+    $.ajax({
+      url: '/api/session',
+      method: 'DELETE',
+      success: (response) => {
+        window.location = '/session/new'
+      }
+    });
   }
 }
 
