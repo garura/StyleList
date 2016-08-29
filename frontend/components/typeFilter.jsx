@@ -27,7 +27,7 @@ export default class TypeFilter extends React.Component {
       type: props.type,
       displayed: props.displayed,
       applied: {
-        weather: false,
+        weather: true,
         colors: false,
         formality: false
       },
@@ -71,20 +71,20 @@ export default class TypeFilter extends React.Component {
 
   weatherElements() {
     return (
-      <div className='filter-weather unselected'>
+      <div className='filter-weather'>
         <p className='filter-title' onClick={this._applyFilter}>Weather</p>
         <div className="weather-input">
           <p className='filter-selection'>{weatherKey[this.state.weather.temp]}</p>
-          <p>&#10052;</p>
-          <input disabled className={this.state.type} type="range" min={1} max={5} defaultValue={3} onChange={this._applyFilter}/>
-          <p>&#9728;</p>
+          <p className='weather-icon'>&#10052;</p>
+          <input className={this.state.type} type="range" min={1} max={5} defaultValue={3} onChange={this._applyFilter}/>
+          <p className='weather-icon'>&#9728;</p>
         </div>
 
         <div className='weather-buttons'>
-          <button className={this.state.weather.rain ? "checked" : ""} onClick={this._applyFilter}>Rain</button>
-          <button className={this.state.weather.clouds ? "checked" : ""} onClick={this._applyFilter}>Clouds</button>
-          <button className={this.state.weather.wind ? "checked" : ""} onClick={this._applyFilter}>Wind</button>
-          <button className={this.state.weather.snow ? "checked" : ""} onClick={this._applyFilter}>Snow</button>
+          <button className={"weather-button " + (this.state.weather.rain ? "checked" : "")} onClick={this._applyFilter}>Rain</button>
+          <button className={"weather-button " + (this.state.weather.clouds ? "checked" : "")} onClick={this._applyFilter}>Clouds</button>
+          <button className={"weather-button " + (this.state.weather.wind ? "checked" : "")} onClick={this._applyFilter}>Wind</button>
+          <button className={"weather-button " + (this.state.weather.snow ? "checked" : "")} onClick={this._applyFilter}>Snow</button>
         </div>
       </div>
     )
@@ -96,7 +96,7 @@ export default class TypeFilter extends React.Component {
     if (this.state.applied.formality) {
       let tar = $(event.currentTarget);
       tar.siblings().each((index, button) => {
-        button.className = "";
+        button.className = "formality-button";
       });
       tar.addClass('checked');
       this.setState({formality: parseInt(tar.attr("data"))})
@@ -109,11 +109,11 @@ export default class TypeFilter extends React.Component {
         <p className='filter-title' onClick={this._applyFilter}>Formality</p>
         <p className='filter-selection'>{formalityKey[this.state.formality]}</p>
         <div className="formality-buttons">
-          <button data={1} onClick={this._updateFormality}>Ultra Casual</button>
-          <button data={2} onClick={this._updateFormality}>Casual</button>
-          <button data={3} onClick={this._updateFormality}>Business Casual</button>
-          <button data={4} onClick={this._updateFormality}>Semi-formal</button>
-          <button data={5} onClick={this._updateFormality}>Formal</button>
+          <button className="formality-button" data={1} onClick={this._updateFormality}>Ultra Casual</button>
+          <button className="formality-button checked" data={2} onClick={this._updateFormality}>Casual</button>
+          <button className="formality-button" data={3} onClick={this._updateFormality}>Business Casual</button>
+          <button className="formality-button" data={4} onClick={this._updateFormality}>Semi-formal</button>
+          <button className="formality-button" data={5} onClick={this._updateFormality}>Formal</button>
         </div>
       </div>
     )

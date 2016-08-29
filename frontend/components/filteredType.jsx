@@ -35,11 +35,17 @@ export default class FilteredType extends React.Component {
   _generateList(){
     if (this.state.type) {
       let that = this;
-      return this.state.items.map((item, index) => {
+      let list = this.state.items.map((item, index) => {
         let callback = that._changeFocus(item)
         // feels hacky ^
         return <ArticleListItem key={index} onClick={callback} item={item} />
       });
+      if (list.length === 0) {
+        return <p>No articles matching your filters</p>
+      }
+      else {
+        return list;
+      }
     }
     return;
   }

@@ -1,9 +1,11 @@
 .articles-index, .outfits-index {
   /*background-color: grey;*/
+  position: absolute;
   vertical-align: top;
   display: inline-block;
   width: 70vw;
   min-width: 600px;
   margin: 30px;
-  margin-top: 81px;
+  margin-top: 91px;
+  left: 200px;
 }

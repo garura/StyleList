@@ -21,23 +21,3 @@
   /*border: 1px solid black;*/
   border-bottom-left-radius: 3px;
 }
-
-.article-detail {
-  /*position: absolute;*/
-  display: inline-block;
-  margin: 10px;
-  margin-left: 0px;
-  padding: 5px;
-  min-height: 270px;
-  width: 48%;
-  /*max*/
-  background-color: lightblue;
-  /*border-bottom: 1px solid black;
-  border: 1px solid black;*/
-  border-radius: 4px;
-  /*border-bottom-right-radius: 3px;*/
-}
-
-.article-detail img {
-  /*margin: 5px;*/
-}

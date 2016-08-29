@@ -21,9 +21,21 @@ export default class ArticleListItem extends React.Component {
   }
 
   render() {
+    let description;
+    if (this.state.item.description === null) {
+      description = "None";
+    }
+    else if (this.state.item.description.length > 30) {
+      description = this.state.item.description.slice(0, 30) + "...";
+    }
+    else {
+      description = this.state.item.description;
+    }
     return (
       <div onClick={this._clicked}className="article-list-item">
-        Title: {this.state.item.title}
+        <p className='list-item-title'>Title: {this.state.item.title}</p>
+        <p className='list-item-worn'>Last Worn: {this.state.item.last_worn || "Unknown"}</p>
+        <p className='list-item-description'>Description: {description}</p>
       </div>
     )
   }

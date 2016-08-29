@@ -1,4 +1,5 @@
 class Api::SessionsController < ApplicationController
+
   def create
     @user = User.find_by_credentials(
       params[:user][:email],
@@ -13,11 +14,12 @@ class Api::SessionsController < ApplicationController
   end
 
   def show
-    render :show
+    # render :show
+    # :show not defined
   end
 
   def destroy
     log_out! if current_user
-    render :show
+    render json: {user: "goodbye"}
   end
 end

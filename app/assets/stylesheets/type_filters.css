@@ -3,7 +3,7 @@
   border: 1px solid black;
   border-radius: 5px;
   min-height: 100px;
-  min-width: 600px;
+  min-width: 650px;
   margin-bottom: 20px;
 }
 
@@ -30,24 +30,15 @@
   padding: 10px;
   text-align: right;
 }
-/*
-.filter-header button {
-  margin-right: 10px;
-  padding: 10px;
-}*/
 
 .filter-header button:hover {
   color: lightblue;
 }
 
-
 .filter-options {
   display: flex;
   justify-content: center;
-  /*background-color: lightgrey;*/
-  /*float: right;*/
   padding: 10px 10px 0px 10px;
-  /*width: 100%;*/
   min-width: 400px;
 }
 
@@ -58,46 +49,46 @@
   text-align: center;
   height: 20px;
   margin: auto auto;
-  /*width: 40px;*/
   background-color: red;
   color: white;
-
 }
 
 .filter-title {
   width: 100%;
   font-size: 25px;
   text-align: center;
-
+  border-bottom: 5px solid white;
 }
 
 .filter-title:hover {
   cursor: pointer;
-  color: black;
+  color: red;
 }
 
 .filter-selection {
-  /*display: block;*/
   text-align: center;
   margin-top: 10px;
   width: 100%;
-
 }
 
+
+/* weather */
+
 .weather-input input {
-  width: 200px;
+  width: 70%
 }
 
 .weather-input p {
   margin: auto 0px;
 }
 
+.weather-icon {
+  width: 10px;
+}
+
 .filter-weather {
-  /*background-color: lightyellow;*/
   background-color: #ccccff;
   border-radius: 4px;
-  /*margin: 10px;*/
-  /*padding: 5px;*/
   min-width: 150px;
 }
 
@@ -116,29 +107,23 @@
   justify-content: center;
 }
 
-.weather-buttons button{
-  border: 1px solid black;
+.weather-button {
+  background-color: darkgrey;
+  border-radius: 3px;
   text-align: center;
   padding: 5px;
   margin: 5px;
   width: 90px;
 }
 
-.checked {
-  background-color: white;
-}
-
 .filter-colors {
   background-color: #ccccff;
-  /*background-color: lightyellow;*/
   border-radius: 4px;
-  padding: 5px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   max-width: 450px;
   min-width: 200px;
-  /*border-left: 1px solid black;*/
 }
 
 .filter-colors label {
@@ -146,18 +131,14 @@
   min-width: 80px;
 }
 
+
+/* forality */
+
 .filter-formality {
-  /*display: flex;*/
-  /*flex-wrap: wrap;*/
-  /*justify-content: center;*/
   border-radius: 4px;
-  /*background-color: pink;*/
   background-color: #ccccff;
   margin: 0px 10px;
-  /*padding: 5px;*/
   min-width: 150px;
-  /*border-left: 1px solid black;*/
-  /*border-right: 1px solid black;*/
 }
 
 .formality-buttons {
@@ -167,12 +148,18 @@
   justify-content: center;
 }
 
-.formality-buttons button {
+.formality-button {
+  background-color: darkgrey;
   text-align: center;
   width: 60px;
+  height: 36px;
   padding: 5px;
   margin: 5px;
   border-radius: 3px;
+}
+
+.checked {
+  background-color: white;
 }
 
 .isHidden {
@@ -184,8 +171,12 @@
   font-weight:lighter;
 }
 
+
+/* color */
+
 .color-checkbox {
   padding: 5px;
+  width: 87px;
 }
 
 .color-checkbox span {
@@ -197,10 +188,7 @@
   border: 3px;
   border-style: outset;
   border-color: white;
-  /*border-radius: 2px;*/
 }
-
-
 
 .color-checkbox.red span {
   background-color: red;
@@ -264,8 +252,4 @@
   background-color: #e6e6ff;
   border-style: inset;
   background: none;
-}
-
-
-#rain {
 }
