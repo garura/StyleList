@@ -12,7 +12,7 @@ export default class Navbar extends React.Component {
         <p className='navbar-logo'>StyleList</p>
         <ul className='navbar-options'>
           <li className='navbar-item'><Link to={'/articles'}>View Wardrobe</Link></li>
-          <li className='navbar-item'>Add Article</li>
+          <li className='navbar-item'><Link to={'/newarticle'}>Add Article</Link></li>
           <li className='navbar-item'><Link to={'/outfits'}>View Outfits</Link></li>
           <li className='navbar-item'>Account</li>
           <li className='navbar-item'>Sign Out</li>

@@ -1,0 +1,29 @@
+.create-article-index {
+  background-color: white;
+  vertical-align: top;
+  display: inline-block;
+  width: 70vw;
+  height: 50%;
+  min-width: 600px;
+  margin: 30px;
+  margin-top: 81px;
+}
+.create-article-list {
+  display: flex;
+  flex-direction: column;
+}
+.create-article-list input {
+  border: 1px solid pink;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+}
+.show {
+  display: block;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+}
