@@ -76,7 +76,7 @@ export default class TypeFilter extends React.Component {
         <div className="weather-input">
           <p className='filter-selection'>{weatherKey[this.state.weather.temp]}</p>
           <p>&#10052;</p>
-          <input type="range" min={1} max={5} defaultValue={3} onChange={this._applyFilter}/>
+          <input disabled className={this.state.type} type="range" min={1} max={5} defaultValue={3} onChange={this._applyFilter}/>
           <p>&#9728;</p>
         </div>
 
@@ -154,6 +154,9 @@ export default class TypeFilter extends React.Component {
 
     switch (event.target.innerText) {
       case 'Weather':
+        let slider = $(".weather-input>." + this.state.type);
+        let disabled = !(slider.prop('disabled'));
+        slider.prop('disabled', disabled);
       case 'Formality':
       case 'Colors':
         $(event.currentTarget).parent().toggleClass('unselected');
@@ -175,9 +178,11 @@ export default class TypeFilter extends React.Component {
         break;
     }
     if (event.target.value) {
-      newValue = this.state.weather;
-      newValue["temp"] = parseInt(event.target.value)
-      this.setState({weather: newValue})
+      if (this.state.applied.weather) {
+        newValue = this.state.weather;
+        newValue["temp"] = parseInt(event.target.value)
+        this.setState({weather: newValue})
+      }
     }
   }
   _updateFilter(event) {
@@ -197,7 +202,6 @@ export default class TypeFilter extends React.Component {
     $('.filter-options.' + this.state.type).toggleClass('isHidden');
     $('.viewable-articles.' + this.state.type).toggleClass('isHidden');
     $('.filter-apply.' + this.state.type).toggleClass('isHidden');
-    debugger;
     let show = !this.state.showing
     this.setState({showing: show})
   }
