@@ -7,6 +7,7 @@ import OutfitsIndex from './components/outfitsIndex'
 
 let routes = (
   <Route path='/' component={App}>
+    <IndexRoute component={ArticlesIndex}/>
     <Route path='/articles' component={ArticlesIndex}/>
     <Route path='/outfits' component={OutfitsIndex}/>
   </Route>
@@ -19,5 +20,3 @@ document.addEventListener("DOMContentLoaded", () => {
       )
   }
 });
-
-// <IndexRoute component={ArticlesIndex}/>
