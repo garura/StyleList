@@ -72,9 +72,18 @@ export default class createArticle extends React.Component {
     }
   }
 
+  _changeInputWeatherTypes(event) {
+    event.preventDefault();
+    let tar = event.target.innerText.toLowerCase();
+    let old_choice = this.state[tar];
+    let new_choice = !old_choice
+    this.setState({[tar]: new_choice})
+
+  }
+
   render() {
-    console.log(this.state.min);
-    console.log(this.state.max);
+    console.log(this.state.rain);
+    console.log(this.state.snow);
     return (
       <div className="create-article-index">
         <div className="create-article-list">
@@ -89,10 +98,10 @@ export default class createArticle extends React.Component {
           </select>
         </label>
           <label>Title
-            <input type="text" value=""/>
+            <input type="text" placeholder="Ex. Warm Cashmere Sweater"/>
           </label>
           <label>Description
-            <input type="text" value=""/>
+            <textarea id="description" placeholder="write some notes about your item"/>
           </label>
           <label>Brand
             <input type="text" value=""/>
@@ -117,10 +126,12 @@ export default class createArticle extends React.Component {
           </select>
         </label>
         <label>Wearable in:
-          <button>Rain</button>
-          <button>Wind</button>
-          <button>Snow</button>
-          <button>Clouds</button>
+          <button onClick={this._changeInputWeatherTypes}>Rain</button>
+          <button onClick={this._changeInputWeatherTypes}>Wind</button>
+          <button onClick={this._changeInputWeatherTypes}>Snow</button>
+          <button onClick={this._changeInputWeatherTypes}>Clouds</button>
+        </label>
+        <label>
           <p>From temperature ranges of</p>
           <select onChange={this._changeInputWeatherMin} defaultValue={this.state.min}>
             <option value={1}>Freezing</option>
@@ -130,13 +141,16 @@ export default class createArticle extends React.Component {
             <option value={5}>Hot</option>
           </select>
           <p>to</p>
-            <select onChange={this._changeInputWeatherMax} defaultValue={this.state.max}>
-              <option value={1}>Freezing</option>
-              <option value={2}>Cold</option>
-              <option value={3}>Chilly</option>
-              <option value={4}>Warm</option>
-              <option value={5}>Hot</option>
-            </select>
+          <select onChange={this._changeInputWeatherMax} defaultValue={this.state.max}>
+            <option value={1}>Freezing</option>
+            <option value={2}>Cold</option>
+            <option value={3}>Chilly</option>
+            <option value={4}>Warm</option>
+            <option value={5}>Hot</option>
+          </select>
+        </label>
+        <label>
+          <button>Upload a photo</button>
         </label>
         </div>
       </div>

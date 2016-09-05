@@ -5,13 +5,28 @@
 .create-article-list {
   display: flex;
   flex-direction: column;
-  height: 400px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 300px;
+  border: 1px solid orange;
 }
 .create-article-list input {
+  font-size: 15px;
   padding: 5px;
   border: 1px solid pink;
 }
 .create-article-list label {
   font-size: 20px;
+  height: 50px;
   /*border: 1px solid pink;*/
+}
+.create-article-list button {
+  padding: 5px;
+}
+
+.create-article-list textarea {
+  resize: none;
+  height: 50px;
+  background-color: lightpink;
+  border: 1px solid black;
 }
