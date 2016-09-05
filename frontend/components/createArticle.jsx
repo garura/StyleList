@@ -5,55 +5,53 @@ export default class createArticle extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      articleType: "",
       title: "",
       description: "",
       brand: "",
       color: " "
     }
-    this._toggleCheckedColor = this._toggleCheckedColor.bind(this);
-    this._toggleDropdown = this._toggleDropdown.bind(this);
+    this._toggleDropdownType = this._toggleDropdownType.bind(this);
+    this._toggleDropdownColor = this._toggleDropdownColor.bind(this);
+    this._changeInputType = this._changeInputType.bind(this);
+    this._changeInputColor = this._changeInputColor.bind(this);
   }
-  _toggleDropdown(event) {
+  _toggleDropdownType(event) {
     event.preventDefault();
-    let tar = $('#dropdown');
+    let tar = $('#dropdown-type');
     tar.toggleClass('show');
+  }
+  _toggleDropdownColor(event) {
+    event.preventDefault();
+    let tar = $('#dropdown-color');
+    tar.toggleClass('show');
+  }
+  _changeInputType(event) {
+    event.preventDefault();
+    let choice = event.target.value
+    this.setState({articleType: choice})
+  }
+  _changeInputColor(event) {
+    event.preventDefault();
+    let choice = event.target.value
+    this.setState({color: choice})
+  }
 
-  }
-  _toggleCheckedColor(event) {
-    event.preventDefault()
-      let tar = $(event.currentTarget);
-      let color = tar.innerText;
-      tar.toggleClass('unchecked');
-      this.setState({color: color});
-  }
-  colorElements() {
-    let colorChoices = ["red", "orange", "yellow", "green", "blue", "purple", "pink", "brown","white", "grey", "black", "denim", "patterned"]
-    let checkboxes = colorChoices.map((color, index) => {
-      return (
-        <label key={index} onClick={this._toggleCheckedColor} className={"color-checkbox " + color +" unchecked"}><span></span>{color}</label>
-      )
-    })
-    return (
-      <div className='filter-colors'>
-        <p className='filter-title'>Colors</p>
-        {checkboxes}
-      </div>
-    )
-  }
   render() {
+    console.log(this.state);
     return (
       <div className="create-article-index">
         <div className="create-article-list">
-          <label onClick={this._toggleDropdown}>Article Type:
-            <ul className="dropdown-content" id="dropdown">
-              <li>"Tops"</li>
-              <li>"Bottoms"</li>
-              <li>"Outerwear"</li>
-              <li>"Dresses"</li>
-              <li>"Shoes"</li>
-              <li>"Miscellaneous"</li>
-            </ul>
-          </label>
+          <label>Category:
+          <select onChange={this._changeInputType}>
+            <option value="tops">Tops</option>
+            <option value="bottoms">Bottoms</option>
+            <option value="dresses">Dresses</option>
+            <option value="outerwear">Outerwear</option>
+            <option value="shoes">Shoes</option>
+            <option value="misc">Miscellaneous</option>
+          </select>
+        </label>
           <label>Title
             <input type="text" valueLink={linkState(this,'title')}/>
           </label>
@@ -63,7 +61,16 @@ export default class createArticle extends React.Component {
           <label>Brand
             <input type="text" valueLink={linkState(this,'brand')}/>
           </label>
-          {this.colorElements()}
+          <label>Color:
+          <select onChange={this._changeInputColor}>
+            <option value="red">Red</option>
+            <option value="orange">Orange</option>
+            <option value="yellow">Yellow</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+          </select>
+        </label>
         </div>
       </div>
     )
