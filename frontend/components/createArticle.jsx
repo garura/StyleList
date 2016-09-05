@@ -86,6 +86,7 @@ export default class createArticle extends React.Component {
     console.log(this.state.snow);
     return (
       <div className="create-article-index">
+        <p className="create-article-title">Add an article to your wardrobe !</p>
         <div className="create-article-list">
           <label>Category:
           <select onChange={this._changeInputType}>
@@ -153,6 +154,7 @@ export default class createArticle extends React.Component {
           <button>Upload a photo</button>
         </label>
         </div>
+        <button className="submit">Save Item</button>
       </div>
     )
   }

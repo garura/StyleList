@@ -1,6 +1,21 @@
 .create-article-index {
   background-color: white;
   height: 500px;
+  position: absolute;
+  vertical-align: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 70vw;
+  min-width: 600px;
+  margin: 30px;
+  margin-top: 91px;
+  left: 200px;
+  /*padding-bottom: 10px;*/
+}
+.create-article-title {
+  font-size: 40px;
 }
 .create-article-list {
   display: flex;
@@ -9,6 +24,8 @@
   flex-wrap: wrap;
   height: 300px;
   border: 1px solid orange;
+  width: 75%;
+  margin: 10px auto;
 }
 .create-article-list input {
   font-size: 15px;
