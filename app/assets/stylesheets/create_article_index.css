@@ -1,6 +1,7 @@
 .create-article-index {
-  background-color: white;
-  height: 500px;
+  /*background-color: white;*/
+  background-color: #6699ff;
+  min-height: 500px;
   position: absolute;
   vertical-align: top;
   display: flex;
@@ -15,35 +16,110 @@
   /*padding-bottom: 10px;*/
 }
 .create-article-title {
-  font-size: 40px;
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+  color: #134074;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid white;
+  background-color: rgba(230, 238, 255, 0.3);
 }
+
+
 .create-article-list {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
-  height: 300px;
-  border: 1px solid orange;
+  height: 400px;
+  /*border: 1px solid orange;*/
   width: 75%;
   margin: 10px auto;
 }
 .create-article-list input {
-  font-size: 15px;
+  font-size: 18px;
+  text-align: center;
   padding: 5px;
-  border: 1px solid pink;
-}
-.create-article-list label {
-  font-size: 20px;
-  height: 50px;
+  border-radius: 3px;
+  width: 96%;
+  background-color: white;
+  /*background-color: rgba(230, 238, 255, .3);*/
   /*border: 1px solid pink;*/
 }
-.create-article-list button {
+.create-article-list label {
+  color: #001133;
+  font-weight:lighter;
+  font-size: 16px;
+  font-stretch: semi-expanded;
+  height: auto;
+  width: 47%;
+  padding:10px 5px;
+  margin: 3px;
+  border-radius: 3px;
+  background-color: #33ccff;
+  background-color: #6699ff;
+  /*border: 1px solid pink;*/
+}
+.create-article-list p {
+  background-color: rgba(230, 238, 255, 0.3);
+  text-align: center;
+  color: white;
+  width: 150px;
+  padding: 5px 5px;
+  display: inline-block;
+
+}
+
+.wearable-buttons {
   padding: 5px;
+  margin: 5px;
+  display: flex;
+  justify-content: space-around;
+  /*border: 1px solid black;*/
+}
+.wearable-buttons button {
+  padding: 6px;
+  width: 50px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 1px 1px 1px black;
 }
 
 .create-article-list textarea {
+  display: block;
   resize: none;
   height: 50px;
-  background-color: lightpink;
-  border: 1px solid black;
+  width: 100%;
+  /*background-color: #001133;*/
+  color: white;
+  /*border: 1px solid black;*/
+}
+.create-article-list select {
+  height: 30px;
+  width: 150px;
+  font-size: 16px;
+  font-weight: 100;
+  padding: 10px;
+  text-align: center;
+  float: right;
+  background-color: white;
+  /*color: white;*/
+  /*background-color: #001133;*/
+}
+.temp-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*background-color: #001133;*/
+}
+.temp-select p {
+  width: 95%;
+  padding: 5px;
+  margin: 5px;
+}
+
+.temp-select select {
+  align-items: center;
 }

@@ -86,9 +86,10 @@ export default class createArticle extends React.Component {
     console.log(this.state.snow);
     return (
       <div className="create-article-index">
-        <p className="create-article-title">Add an article to your wardrobe !</p>
+        <p className="create-article-title">ADD ARTICLE</p>
         <div className="create-article-list">
-          <label>Category:
+          <label>
+            <p>CATEGORY</p>
           <select onChange={this._changeInputType}>
             <option value="tops">Tops</option>
             <option value="bottoms">Bottoms</option>
@@ -98,16 +99,22 @@ export default class createArticle extends React.Component {
             <option value="misc">Miscellaneous</option>
           </select>
         </label>
-          <label>Title
+          <label>
+            <p>TITLE</p>
             <input type="text" placeholder="Ex. Warm Cashmere Sweater"/>
           </label>
-          <label>Description
-            <textarea id="description" placeholder="write some notes about your item"/>
+          <label>
+            <p>DESCRIPTION</p>
+            <div>
+              <textarea id="description" placeholder="write some notes about your item"/>
+            </div>
           </label>
-          <label>Brand
-            <input type="text" value=""/>
+          <label>
+            <p>BRAND</p>
+            <input type="text" placeholder="Ex. Free People"/>
           </label>
-          <label>Color:
+          <label>
+            <p>COLOR</p>
           <select onChange={this._changeInputColor}>
             <option value="red">Red</option>
             <option value="orange">Orange</option>
@@ -117,7 +124,8 @@ export default class createArticle extends React.Component {
             <option value="purple">Purple</option>
           </select>
         </label>
-        <label>Formality:
+        <label>
+          <p>FORMALITY</p>
           <select onChange={this._changeInputFormality}>
             <option value={1}>Ultra Casual</option>
             <option value={2}>Casual</option>
@@ -126,14 +134,17 @@ export default class createArticle extends React.Component {
             <option value={5}>Formal</option>
           </select>
         </label>
-        <label>Wearable in:
-          <button onClick={this._changeInputWeatherTypes}>Rain</button>
-          <button onClick={this._changeInputWeatherTypes}>Wind</button>
-          <button onClick={this._changeInputWeatherTypes}>Snow</button>
-          <button onClick={this._changeInputWeatherTypes}>Clouds</button>
-        </label>
         <label>
-          <p>From temperature ranges of</p>
+          <p>WEARABLE IN</p>
+          <div className="wearable-buttons">
+            <button onClick={this._changeInputWeatherTypes}>Rain</button>
+            <button onClick={this._changeInputWeatherTypes}>Wind</button>
+            <button onClick={this._changeInputWeatherTypes}>Snow</button>
+            <button onClick={this._changeInputWeatherTypes}>Clouds</button>
+          </div>
+        </label>
+        <label className="temp-select" >
+          <p>FROM TEMPERATURE RANGES FROM</p>
           <select onChange={this._changeInputWeatherMin} defaultValue={this.state.min}>
             <option value={1}>Freezing</option>
             <option value={2}>Cold</option>
@@ -141,7 +152,7 @@ export default class createArticle extends React.Component {
             <option value={4}>Warm</option>
             <option value={5}>Hot</option>
           </select>
-          <p>to</p>
+          <p>TO</p>
           <select onChange={this._changeInputWeatherMax} defaultValue={this.state.max}>
             <option value={1}>Freezing</option>
             <option value={2}>Cold</option>
@@ -151,7 +162,7 @@ export default class createArticle extends React.Component {
           </select>
         </label>
         <label>
-          <button>Upload a photo</button>
+          <p><button>UPLOAD A PHOTO</button></p>
         </label>
         </div>
         <button className="submit">Save Item</button>
