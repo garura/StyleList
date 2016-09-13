@@ -1,5 +1,6 @@
 import React from 'react'
 import linkState from 'react-link-state'
+import ApiUtil from '../util/apiUtil'
 
 let formalityKey = {
   1: "Ultra Casual",
@@ -32,6 +33,27 @@ export default class createArticle extends React.Component {
     this._changeInputWeatherMin = this._changeInputWeatherMin.bind(this);
     this._changeInputWeatherMax = this._changeInputWeatherMax.bind(this);
     this._changeInputWeatherTypes = this._changeInputWeatherTypes.bind(this);
+  }
+
+  _saveItem(event){
+    event.preventDefault();
+    let item = { article: {
+      article_type: this.state.articleType,
+      title: this.state.title,
+      description: this.state.description,
+      brand: this.state.brand,
+      color: this.state.color,
+      formality: this.state.formality,
+      temp_min: this.state.min,
+      temp_max: this.state.max,
+      rain: this.state.rain,
+      wind: this.state.wind,
+      clouds: this.state.clouds,
+      snow: this.state.snow
+    }}
+
+    ApiUtil.saveArticle(item);
+
   }
 
   _changeInputType(event) {
@@ -165,7 +187,7 @@ export default class createArticle extends React.Component {
           <p><button>UPLOAD A PHOTO</button></p>
         </label>
         </div>
-        <button className="submit">Save Item</button>
+        <button onClick={this._saveItem} className="submit">Save Item</button>
       </div>
     )
   }
