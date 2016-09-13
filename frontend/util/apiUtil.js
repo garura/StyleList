@@ -16,7 +16,7 @@ const ApiUtil = {
   },
   saveArticle: (item) => {
     $.ajax({
-      url: 'api/outfits',
+      url: 'api/articles',
       method: 'POST',
       data: item,
       success: (article) => {
@@ -24,7 +24,7 @@ const ApiUtil = {
         ArticleActions.receiveArticle(article);
       },
       error: (response) => {
-        // debugger;
+        debugger;
       }
     });
   },

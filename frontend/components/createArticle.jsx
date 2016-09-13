@@ -28,11 +28,13 @@ export default class createArticle extends React.Component {
       max: 5
     }
     this._changeInputType = this._changeInputType.bind(this);
+    this._changeInputTitle = this._changeInputTitle.bind(this);
     this._changeInputColor = this._changeInputColor.bind(this);
     this._changeInputFormality = this._changeInputFormality.bind(this);
     this._changeInputWeatherMin = this._changeInputWeatherMin.bind(this);
     this._changeInputWeatherMax = this._changeInputWeatherMax.bind(this);
     this._changeInputWeatherTypes = this._changeInputWeatherTypes.bind(this);
+    this._saveItem = this._saveItem.bind(this);
   }
 
   _saveItem(event){
@@ -60,6 +62,11 @@ export default class createArticle extends React.Component {
     event.preventDefault();
     let choice = event.target.value
     this.setState({articleType: choice})
+  }
+  _changeInputTitle(event) {
+    event.preventDefault();
+    let choice = event.target.value
+    this.setState({title: choice})
   }
   _changeInputColor(event) {
     event.preventDefault();
@@ -123,7 +130,7 @@ export default class createArticle extends React.Component {
         </label>
           <label>
             <p>TITLE</p>
-            <input type="text" placeholder="Ex. Warm Cashmere Sweater"/>
+            <input onChange={this._changeInputTitle} type="text" placeholder="Ex. Warm Cashmere Sweater"/>
           </label>
           <label>
             <p>DESCRIPTION</p>
