@@ -1,13 +1,17 @@
 .navbar {
   position: fixed;
-  display: inline-block;
+  display: flex;
+  z-index: 100;
+  width: 100%;
   /*background-color: #011936;*/
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  /*font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;*/
+  font-family: "Open Sans", sans-serif;
+  font-weight:lighter;
 }
 
 .navbar-logo {
   color: white;
-  background-color: #7796CB;
+  /*background-color: #7796CB;*/
   padding: 10px;
   font-size: 50px;
   font-family: 'Fredericka the Great';
@@ -15,22 +19,27 @@
 
 .navbar-options {
   color: white;
-  height: 70%;
-  width: 165px;
+  /*height: 70%;*/
+  width: 100%;
   background-color: #134074;
   justify-content: space-around;
+  align-items: center;
   display: flex;
-  flex-direction: column;
-  border-radius: 10px;
+  /*flex-direction: column;*/
+  /*border-radius: 10px;*/
   list-style: none;
   font-size: 20px;
-  margin: 10px 10px;
-  padding: 20px;
+  /*margin: 10px 10px;*/
+  /*padding: 20px;*/
 }
 
 .navbar-item {
   padding: 5px;
 }
+
+/*.signout {
+  margin-top: 200px;
+}*/
 
 .navbar-item:hover {
   cursor:pointer;

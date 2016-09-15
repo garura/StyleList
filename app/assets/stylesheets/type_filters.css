@@ -57,6 +57,7 @@
   width: 100%;
   font-size: 25px;
   text-align: center;
+  background-color: rgba(230, 238, 255, 0.3);
   border-bottom: 5px solid white;
 }
 
@@ -87,7 +88,9 @@
 }
 
 .filter-weather {
-  background-color: #ccccff;
+  background-color: #6699ff;
+  color: white;
+  /*background-color: #ccccff;*/
   border-radius: 4px;
   min-width: 150px;
 }
@@ -108,7 +111,8 @@
 }
 
 .weather-button {
-  background-color: darkgrey;
+  background-color: rgba(230, 238, 255, 0.3);
+  /*background-color: darkgrey;*/
   border-radius: 3px;
   text-align: center;
   padding: 5px;
@@ -117,7 +121,9 @@
 }
 
 .filter-colors {
-  background-color: #ccccff;
+  background-color: #6699ff;
+  /*background-color: #ccccff;*/
+  color: white;
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -136,7 +142,9 @@
 
 .filter-formality {
   border-radius: 4px;
-  background-color: #ccccff;
+  background-color: #6699ff;
+  /*background-color: #ccccff;*/
+  color: white;
   margin: 0px 10px;
   min-width: 150px;
 }
@@ -149,9 +157,10 @@
 }
 
 .formality-button {
-  background-color: darkgrey;
+  background-color: rgba(230, 238, 255, 0.3);
+  /*background-color: darkgrey;*/
   text-align: center;
-  width: 60px;
+  width: 64px;
   height: 36px;
   padding: 5px;
   margin: 5px;
@@ -159,7 +168,7 @@
 }
 
 .checked {
-  background-color: white;
+  background-color: pink;
 }
 
 .isHidden {
@@ -176,7 +185,8 @@
 
 .color-checkbox {
   padding: 5px;
-  width: 87px;
+  width: 100px;
+  vertical-align: top;
 }
 
 .color-checkbox span {
@@ -187,7 +197,9 @@
   height: 15px;
   border: 3px;
   border-style: outset;
-  border-color: white;
+  /*border-color: white;*/
+  background-color: red;
+  border-color: lightgrey;
 }
 
 .color-checkbox.red span {
@@ -249,7 +261,9 @@
 }
 
 .color-checkbox.unchecked span {
-  background-color: #e6e6ff;
+  /*background-color: #e6e6ff;*/
+  background-color: lightgrey;
+  background-color: rgba(230, 238, 255, 0.3);
   border-style: inset;
-  background: none;
+  background-image: none;
 }

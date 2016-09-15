@@ -34,7 +34,13 @@ span, article, footer, time, small {
 button:hover {
   cursor: pointer;
 }
+li {
+  list-style: none;
+}
 body {
+  /*background-color: white;*/
   background-color: #7796CB;
   /*background-color: #93E1D8;*/
+  font-family: "Open Sans", sans-serif;
+  font-weight: 100;
 }

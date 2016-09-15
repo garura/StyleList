@@ -6,6 +6,13 @@ const ArticleActions = {
       actionType: "RECEIVE_ARTICLES",
       articles
     });
-  }
+  },
+  receiveArticle: (article) => {
+    AppDispatcher.dispatch({
+      actionType: "RECEIVE_ARTICLE",
+      article
+    });
+  },
+
 }
 export default ArticleActions

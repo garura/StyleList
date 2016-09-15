@@ -14,6 +14,20 @@ const ApiUtil = {
       }
     });
   },
+  saveArticle: (item) => {
+    $.ajax({
+      url: 'api/articles',
+      method: 'POST',
+      data: item,
+      success: (article) => {
+        debugger;
+        ArticleActions.receiveArticle(article);
+      },
+      error: (response) => {
+        debugger;
+      }
+    });
+  },
   fetchOutfits: () => {
     $.ajax({
       url: 'api/outfits',
