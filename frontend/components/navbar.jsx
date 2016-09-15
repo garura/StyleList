@@ -16,12 +16,11 @@ export default class Navbar extends React.Component {
   render() {
     return (
       <div className='navbar'>
-        <p className='navbar-logo'>StyleList</p>
         <ul className='navbar-options'>
+          <p className='navbar-logo'>StyleList</p>
           <li className='navbar-item'><Link to={'/articles'} activeStyle={{ color: 'yellow' }}>View Wardrobe</Link><hr/></li>
           <li className='navbar-item'><Link to={'/newarticle'}>Add Article</Link><hr/></li>
           <li className='navbar-item'><Link to={'/outfits'} activeStyle={{ color: 'yellow' }}>View Outfits</Link><hr/></li>
-          <li className='navbar-item'>Account</li>
           <li className='navbar-item signout' onClick={this._signOut}>Sign Out</li>
         </ul>
       </div>

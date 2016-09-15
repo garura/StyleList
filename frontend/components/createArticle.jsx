@@ -111,8 +111,6 @@ export default class createArticle extends React.Component {
   }
 
   render() {
-    console.log(this.state.rain);
-    console.log(this.state.snow);
     return (
       <div className="create-article-index">
         <p className="create-article-title">ADD ARTICLE</p>
@@ -134,9 +132,9 @@ export default class createArticle extends React.Component {
           </label>
           <label>
             <p>DESCRIPTION</p>
-            <div>
+
               <textarea id="description" placeholder="write some notes about your item"/>
-            </div>
+
           </label>
           <label>
             <p>BRAND</p>
@@ -193,8 +191,8 @@ export default class createArticle extends React.Component {
         <label>
           <p><button>UPLOAD A PHOTO</button></p>
         </label>
-        </div>
         <button onClick={this._saveItem} className="submit">Save Item</button>
+        </div>
       </div>
     )
   }
